@@ -18,4 +18,9 @@ class UserAddress extends Model
         'zip_code',
 
     ];
+
+    public function user()
+    {
+        return $this->hasMany(User::class);
+    }
 }

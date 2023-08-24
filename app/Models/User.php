@@ -46,5 +46,13 @@ class User extends Authenticatable implements MustVerifyEmail
         'password' => 'hashed',
     ];
 
-    
+    public function userInfo()
+    {
+        return $this->belongsTo(UserInfo::class);
+    }
+
+    public function userAddresses()
+    {
+        return $this->belongsTo(UserInfo::class);
+    }
 }

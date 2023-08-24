@@ -13,7 +13,7 @@
 <div class="container">
     <div class="row">
         <div class="col-md-12 col-xl-12 card p-3">
-                    <form action="{{ route('user.profile.update.post') }}" method="POST">
+                    <form action="{{ route('user.profile.update.post',['id' => auth()->user()->id]) }}" method="POST">
                         @csrf
                         <div class="row">
                             <div class="form-row col-xl-6">

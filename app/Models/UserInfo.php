@@ -18,4 +18,9 @@ class UserInfo extends Model
         'profile_image',
         'bio',
     ];
+
+    public function user()
+    {
+        return $this->hasMany(User::class);
+    }
 }

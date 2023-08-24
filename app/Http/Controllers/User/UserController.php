@@ -48,9 +48,9 @@ class UserController extends Controller
         return view('user.dashboard');
     }
 
-    public function profileUpdatePost(Request $request)
+    public function profileUpdatePost(Request $request, $id)
     {
-        $user = new User();
+        $user = User::find($id);
 
         $user->name = $request->name;
         $user->role = $request->role;
