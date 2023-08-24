@@ -26,14 +26,26 @@ class AuthController extends Controller
         $user = User::where('email', $request->email)->first();
 
         if ($user) {
-            if ($user->email_verified_at) {
-                if (Auth::attempt($credentials)) {
-                    return redirect()->route('dashboard');
-                } else {
+            if ($user->email_verified_at)
+            {
+                if (Auth::attempt($credentials))
+                {
+                    if(auth()->user()->status != false)
+                    {
+                        return redirect()->route('dashboard');
+                    }
+                    else
+                    {
+                        return redirect()->route('user.role');
+                    }
+                }
+                else
+                {
                     return back()->withErrors(['password' => 'Invalid email or password']);
                 }
             }
-            else {
+            else
+            {
                 return back()->withErrors(['email' => 'Email not verified']);
             }
         }
@@ -47,11 +59,14 @@ class AuthController extends Controller
     }
 
     public function registerPost(UserRegistration $request){
+
         $user = new User();
+
         $user->email = $request->email;
         $user->password = Hash::make($request->password);
         $user->remember_token = Str::random(60);
         $user->save();
+
         Mail::to($user->email)->send(new VerifyEmail($user));
 
         return redirect()->route('login')->with('success', 'Registration successful. Please check your email for verification.');

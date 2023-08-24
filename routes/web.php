@@ -27,8 +27,15 @@ Route::middleware('guest')->group(function () {
 });
 
 Route::middleware('auth')->group(function () {
+    Route::get('/user-role', [UserController::class, 'userRole'])->name('user.role');
+    Route::get('/investor/{id}', [UserController::class, 'investor'])->name('investor');
+    Route::get('/entrepreneur/{id}', [UserController::class, 'entrepreneur'])->name('entrepreneur');
     Route::get('/user-profile-update', [UserController::class, 'userProfileUpdate'])->name('user.profile.update');
-    Route::get('/dashboard', [UserController::class, 'dashboard'])->name('dashboard');
+    Route::get('/user-profile-update-post', [UserController::class, 'profileUpdatePost'])->name('user.profile.update.post');
+
+    Route::middleware('user.access')->group(function () {
+        Route::get('/dashboard', [UserController::class, 'dashboard'])->name('dashboard');
+    });
 });
 
 Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
