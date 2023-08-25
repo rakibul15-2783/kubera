@@ -2,7 +2,7 @@
 <nav id="sidebar" class="sidebar">
             <div class="sidebar-content js-simplebar">
                <a class="sidebar-brand" href="">
-               <img src="{{ asset('admin') }}/assets/img/logo-white.png" height="50px" alt="Revo Interactive">
+               <h3 class="text-white">Kubera</h3>
                </a>
                <ul class="sidebar-nav">
                   <li class="sidebar-header">

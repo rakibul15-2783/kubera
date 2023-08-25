@@ -27,6 +27,7 @@ Route::middleware('guest')->group(function () {
 
 });
 
+//user section
 Route::middleware('auth')->group(function () {
     Route::get('/user-role', [UserController::class, 'userRole'])->name('user.role');
     Route::get('/investor/{id}', [UserController::class, 'investor'])->name('investor');
@@ -39,9 +40,16 @@ Route::middleware('auth')->group(function () {
     });
 });
 
-Route::get('/admin-dashboard', [AdminController::class, 'dashboard'])->name('admin.dashboard');
+// admin section
+Route::middleware('admin.access')->group(function () {
+    Route::get('/admin-dashboard', [AdminController::class, 'dashboard'])->name('admin.dashboard');
+});
 
 
+Route::get('/admin-login', [AdminController::class, 'login'])->name('admin.login');
+Route::post('/admin-login-post', [AdminController::class, 'loginPost'])->name('admin.login.post');
+Route::get('/admin-logout', [AdminController::class, 'logout'])->name('admin.logout');
+//user logout
 Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
 
 
