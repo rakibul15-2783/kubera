@@ -23,7 +23,6 @@ class AdminController extends Controller
     {
         $credentials = $request->only('email', 'password');
 
-
         if (Auth::guard('admin')->attempt($credentials)) {
 
             $admin = Auth::guard('admin')->user();
@@ -38,7 +37,6 @@ class AdminController extends Controller
                 return back()->withInput()->withErrors(['email' => 'Admin is inactive']);
             }
         }
-
         return back()->withInput()->withErrors(['email' => 'Invalid Email or Password']);
     }
 
@@ -47,5 +45,15 @@ class AdminController extends Controller
         Auth::guard('admin')->logout();
 
         return redirect()->route('admin.login');
+    }
+
+    public function changePassword()
+    {
+        return view('admin.change-password');
+    }
+
+    public function changePasswordPost(Request $request, $id)
+    {
+        return view('admin.change-password');
     }
 }

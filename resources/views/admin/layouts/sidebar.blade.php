@@ -9,11 +9,12 @@
                      Pages
                   </li>
                   <li class="sidebar-item ">
-                     <a href=""  class="sidebar-link collapsed">
-                     <i class="align-middle" data-feather="sliders"></i> <span class="align-middle">Dashboard</span>
+                     <a href="{{ route('admin.dashboard') }}"  class="sidebar-link collapsed">
+                         <span class="align-middle">Dashboard</span>
                      </a>
+                     <a href="{{ route('admin.password') }}"  class="sidebar-link collapsed">
+                         <span class="align-middle">Change Password</span>
                      </a>
-
                   </li>
                </ul>
             </div>

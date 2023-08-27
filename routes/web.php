@@ -4,6 +4,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\AuthController;
 use App\Http\Controllers\User\UserController;
 use App\Http\Controllers\Admin\AdminController;
+use App\Http\Controllers\Entrepreneur\EntrepreneurController;
+use App\Http\Controllers\Inverstor\InsvestorController;
 
 /*
 |--------------------------------------------------------------------------
@@ -30,10 +32,9 @@ Route::middleware('guest')->group(function () {
 //user section
 Route::middleware('auth')->group(function () {
     Route::get('/user-role', [UserController::class, 'userRole'])->name('user.role');
-    Route::get('/investor/{id}', [UserController::class, 'investor'])->name('investor');
-    Route::get('/entrepreneur/{id}', [UserController::class, 'entrepreneur'])->name('entrepreneur');
-    Route::get('/user-profile-update', [UserController::class, 'userProfileUpdate'])->name('user.profile.update');
-    Route::post('/user-profile-update-post/{id}', [UserController::class, 'profileUpdatePost'])->name('user.profile.update.post');
+    Route::get('/investor', [InsvestorController::class, 'investorProfileUpdate'])->name('investor');
+    Route::get('/entrepreneur', [EntrepreneurController::class, 'entrepreneurProfileUpdate'])->name('entrepreneur');
+    // Route::post('/user-profile-update-post/{id}', [UserController::class, 'profileUpdatePost'])->name('user.profile.update.post');
 
     Route::middleware('user.access')->group(function () {
         Route::get('/dashboard', [UserController::class, 'dashboard'])->name('dashboard');
@@ -43,6 +44,8 @@ Route::middleware('auth')->group(function () {
 // admin section
 Route::middleware('admin.access')->group(function () {
     Route::get('/admin-dashboard', [AdminController::class, 'dashboard'])->name('admin.dashboard');
+    Route::get('/admin-change-password', [AdminController::class, 'changePassword'])->name('admin.password');
+    Route::get('/admin-change-password-post', [AdminController::class, 'changePasswordPost'])->name('admin.password.post');
 });
 
 

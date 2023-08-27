@@ -12,8 +12,9 @@
 <h2></h2>
 <div class="container">
     <div class="row">
+        <h2>Investor Profile</h2>
         <div class="col-md-12 col-xl-12 card p-3">
-                    <form action="{{ route('user.profile.update.post',['id' => auth()->user()->id]) }}" method="POST">
+                    <form action="" method="POST">
                         @csrf
                         <div class="row">
                             <div class="form-row col-xl-6">

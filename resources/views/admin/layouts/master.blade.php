@@ -5,7 +5,7 @@
       <meta http-equiv="X-UA-Compatible" content="IE=edge">
       <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
       <link rel="shortcut icon" href="{{ asset('admin') }}/assets/img/favicon.ico" />
-      <title>Meal System Admin</title>
+      <title>Kubera | Admin Panel</title>
       <link href="{{ asset('admin') }}/assets/css/app.css" rel="stylesheet">
 
     <!-- font awesome cdn -->
@@ -21,7 +21,7 @@
       @include('admin.layouts.sidebar')
 
          <div class="main">
-         @include('admin.layouts.topbar')
+            @include('admin.layouts.topbar')
             <main class="content">
 
                <!-- main content -->
