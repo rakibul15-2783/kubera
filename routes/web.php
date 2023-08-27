@@ -45,7 +45,7 @@ Route::middleware('auth')->group(function () {
 Route::middleware('admin.access')->group(function () {
     Route::get('/admin-dashboard', [AdminController::class, 'dashboard'])->name('admin.dashboard');
     Route::get('/admin-change-password', [AdminController::class, 'changePassword'])->name('admin.password');
-    Route::get('/admin-change-password-post', [AdminController::class, 'changePasswordPost'])->name('admin.password.post');
+    Route::post('/admin-change-password-post/{id}', [AdminController::class, 'changePasswordPost'])->name('admin.password.post');
 });
 
 

@@ -39,37 +39,45 @@
 	<div class="row">
         <div class="col-lg-4"></div>
 		<div class="col-lg-4">
+            @if(session('success'))
+                <div class="text-success">
+                    <span >{{ session('success') }}</span>
+                </div>
 
-		    <label>Current Password</label>
-		    <div class="form-group pass_show">
-                <input type="password" value="faisalkhan@123" class="form-control" placeholder="Current Password">
-            </div>
-		       <label>New Password</label>
-            <div class="form-group pass_show">
-                <input type="password" value="faisal.khan@123" class="form-control" placeholder="New Password">
-            </div>
-		       <label>Confirm Password</label>
-            <div class="form-group pass_show">
-                <input type="password" value="faisal.khan@123" class="form-control" placeholder="Confirm Password">
-            </div>
-            <div class="form-group text-center">
-                <button class="btn btn-info">Chnage Password</button>
-            </div>
+            @endif
+            <form action="{{ route('admin.password.post',['id' => auth()->guard('admin')->user()->id]) }}" method="POST">
+                @csrf
+                <div class="form-group pass_show">
+                    <input type="password" name="old_password" class="form-control" required placeholder="Current Password">
+                    @error('old_password')
+                        <span class="text-danger">{{ $message }}</span>
+                    @enderror
+                    @if(session('error'))
+                        <span class="text-danger">{{ session('error') }}</span>
+                    @endif
+                </div>
+                <div class="form-group pass_show">
+                    <input type="password" name="password" class="form-control" required placeholder="New Password">
+                    @error('password')
+                        <span class="text-danger">{{ $message }}</span>
+                    @enderror
+                </div>
+                <div class="form-group pass_show">
+                    <input type="password" name="password_confirmation" class="form-control" required placeholder="Confirm Password">
+                    @error('password_confirmation')
+                        <span class="text-danger">{{ $message }}</span>
+                    @enderror
+                    @if(session('newPassError'))
+                        <span class="text-danger">{{ session('newPassError') }}</span>
+                    @endif
+                </div>
 
+                <div class="form-group text-center">
+                    <button type="submit" class="btn btn-info">Change Password</button>
+                </div>
+            </form>
 		</div>
 	</div>
 
 @endsection
 
-<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<script>
-    $(document).ready(function(){
-
-        $('.pass_show').append('<span class="ptxt">Show</span>');
-        });
-        $(document).on('click','.pass_show .ptxt', function(){
-        $(this).text($(this).text() == "Show" ? "Hide" : "Show");
-        $(this).prev().attr('type', function(index, attr){return attr == 'password' ? 'text' : 'password'; });
-
-    });
-</script>
