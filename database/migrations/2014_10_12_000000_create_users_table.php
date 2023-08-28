@@ -19,7 +19,7 @@ return new class extends Migration
             $table->boolean('status')->default(false);
             $table->tinyInteger('role')->nullable();
             $table->timestamp('email_verified_at')->nullable();
-            $table->tinyInteger('user_verified_request')->default("0")->comment("1=requested");
+            $table->tinyInteger('user_verification_request')->default("0")->comment("1=requested");
             $table->tinyInteger('user_verified')->default("0")->comment("1=accept");
             $table->rememberToken();
             $table->timestamps();

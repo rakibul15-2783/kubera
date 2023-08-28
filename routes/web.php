@@ -34,7 +34,9 @@ Route::middleware('auth')->group(function () {
     Route::get('/user-role', [UserController::class, 'userRole'])->name('user.role');
     Route::get('/investor', [InsvestorController::class, 'profileUpdate'])->name('investor');
     Route::post('/investor-profile-update-post/{id}', [InsvestorController::class, 'profileUpdatePost'])->name('investor.profile.update.post');
+    Route::get('/investor-profile', [InsvestorController::class, 'profile'])->name('investor.profile');
     Route::get('/entrepreneur', [EntrepreneurController::class, 'profileUpdate'])->name('entrepreneur');
+
 
     Route::middleware('user.access')->group(function () {
         Route::get('/dashboard', [UserController::class, 'dashboard'])->name('dashboard');

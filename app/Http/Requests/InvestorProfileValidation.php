@@ -22,14 +22,14 @@ class InvestorProfileValidation extends FormRequest
     public function rules(): array
     {
         return [
-            'name' => 'required',
-            'birth_c' => 'required',
-            'nid' => 'required_without:birth_c',
+            'name' => 'required|string|max:255',
+            'birth_c' => 'required_without:nid|string|max:255',
+            'nid' => 'required_without:birth_c|string|max:255',
             'profile_image' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
-            'conuntry' => 'required',
-            'address' => 'required',
-            'state' => 'required',
-            'city' => 'required',
+            'country' => 'required|string|max:57',
+            'address' => 'required|string|max:255',
+            'state' => 'required|string|max:255',
+            'city' => 'required|string|max:255',
             'zip_code' => 'required',
         ];
     }

@@ -13,10 +13,14 @@ class UserController extends Controller
 {
     public function userRole()
     {
-        return view('user.select-role');
+        if(auth()->user()->role == null){
+            return view('user.select-role');
+        }
+        return back();
+
     }
 
-    
+
 
     // public function investor(Request $request, $id)
     // {

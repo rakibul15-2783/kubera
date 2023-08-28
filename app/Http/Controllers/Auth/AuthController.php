@@ -9,6 +9,8 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use App\Models\User;
+use App\Models\UserDetails;
+use App\Models\UserAddress;
 use Illuminate\Contracts\View\View;
 use Illuminate\Support\Facades\Hash;
 use App\Http\Requests\UserRegistration;
@@ -67,6 +69,14 @@ class AuthController extends Controller
         $user->remember_token = Str::random(60);
         $user->save();
 
+        $userDetails = new UserDetails();
+        $userDetails->user_id = $user->id;
+        $userDetails->save();
+
+        $userAddress = new UserAddress();
+        $userAddress->user_id = $user->id;
+        $userAddress->save();
+
         Mail::to($user->email)->send(new VerifyEmail($user));
 
         return redirect()->route('login')->with('success', 'Registration successful. Please check your email for verification.');
@@ -84,9 +94,7 @@ class AuthController extends Controller
         $user->remember_token = null;
         $user->save();
 
-        Auth::login($user);
-
-        return redirect()->route('user.profile.update')->with('success', 'Email verified successfully.');
+        return redirect()->route('login')->with('success', 'Email verified successfully.');
     }
 
     public function logout()

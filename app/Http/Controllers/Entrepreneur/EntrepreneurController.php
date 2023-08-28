@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Entrepreneur;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\User;
-use App\Models\UserInfo;
+use App\Models\UserDetails;
 use App\Models\UserAddress;
 
 class EntrepreneurController extends Controller
@@ -23,7 +23,7 @@ class EntrepreneurController extends Controller
         $user->role = $request->role;
         $user->save();
 
-        $userInfo = new UserInfo();
+        $userInfo = new UserDetails();
 
         $userInfo->user_id = auth()->user()->id;
         $userInfo->contact_number = $request->contact_number;
