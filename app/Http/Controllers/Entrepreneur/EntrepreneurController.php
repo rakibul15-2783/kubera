@@ -10,12 +10,12 @@ use App\Models\UserAddress;
 
 class EntrepreneurController extends Controller
 {
-    public function entrepreneurProfileUpdate()
+    public function profileUpdate()
     {
-        return view('user.entrepreneur-profile');
+        return view('user.entrepreneur.entrepreneur-profile');
     }
-    
-    public function entrepreneurProfileUpdatePost(Request $request, $id)
+
+    public function profileUpdatePost(Request $request, $id)
     {
         $user = User::find($id);
 
