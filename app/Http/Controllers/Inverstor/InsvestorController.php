@@ -9,6 +9,7 @@ use App\Models\User;
 use App\Models\UserInfo;
 use App\Models\UserAddress;
 use App\Enums\UserRole;
+use App\Http\Requests\InvestorProfileValidation;
 
 class InsvestorController extends Controller
 {
@@ -17,7 +18,7 @@ class InsvestorController extends Controller
         return view('user.investor.investor-profile');
     }
 
-    public function profileUpdatePost(Request $request, $id)
+    public function profileUpdatePost(InvestorProfileValidation $request, $id)
     {
         $user = User::find($id);
 

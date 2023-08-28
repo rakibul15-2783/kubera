@@ -23,8 +23,8 @@ class InvestorProfileValidation extends FormRequest
     {
         return [
             'name' => 'required',
-            'nid' => 'required_without:birth_c',
             'birth_c' => 'required',
+            'nid' => 'required_without:birth_c',
             'profile_image' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
             'conuntry' => 'required',
             'address' => 'required',
