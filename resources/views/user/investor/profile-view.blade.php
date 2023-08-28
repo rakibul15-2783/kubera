@@ -20,6 +20,9 @@
                             <h5>Basic Info</h5>
                         </div>
                         <div class="form-group ">
+                            <b><label for="role">Role: </label></b><span> Investor</span>
+                        </div>
+                        <div class="form-group ">
                             <b><label for="name">Name: </label></b><span> {{ auth()->user()->name }}</span>
                         </div>
                         <div class="form-group ">
@@ -44,7 +47,12 @@
                         </div>
                         <div class="form-group ">
                             <h5>Bio</h5><span> {{ $userDetails->bio }}</span>
+                        </div><br>
+                        @if (auth()->user()->user_verification_request == 1 && auth()->user()->user_verified == 0)
+                        <div class="form-group ">
+                            <span class="btn btn-info">Verification Request Send</span>
                         </div>
+                        @endif
                     </div>
 
                 </div><br>

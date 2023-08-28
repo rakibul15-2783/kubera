@@ -46,6 +46,8 @@ Route::middleware('auth')->group(function () {
 // admin section
 Route::middleware('admin.access')->group(function () {
     Route::get('/admin-dashboard', [AdminController::class, 'dashboard'])->name('admin.dashboard');
+    Route::get('/new-users', [AdminController::class, 'newUser'])->name('new.users');
+    Route::get('/new-user-profile/{id}', [AdminController::class, 'newUserProfile'])->name('new.user.profile');
     Route::get('/admin-change-password', [AdminController::class, 'changePassword'])->name('admin.password');
     Route::post('/admin-change-password-post/{id}', [AdminController::class, 'changePasswordPost'])->name('admin.password.post');
 });

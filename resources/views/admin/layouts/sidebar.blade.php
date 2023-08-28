@@ -12,6 +12,9 @@
                      <a href="{{ route('admin.dashboard') }}"  class="sidebar-link collapsed">
                          <span class="align-middle">Dashboard</span>
                      </a>
+                     <a href="{{ route('new.users') }}"  class="sidebar-link collapsed">
+                         <span class="align-middle">New User</span>
+                     </a>
                      <a href="{{ route('admin.password') }}"  class="sidebar-link collapsed">
                          <span class="align-middle">Change Password</span>
                      </a>

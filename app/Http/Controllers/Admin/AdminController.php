@@ -8,6 +8,9 @@ use Illuminate\Support\Facades\Hash;
 use App\Http\Requests\AdminPasswordChange;
 use Illuminate\Http\Request;
 use App\Models\Admin;
+use App\Models\User;
+use App\Models\UserDetails;
+use App\Models\UserAddress;
 
 class AdminController extends Controller
 {
@@ -19,6 +22,20 @@ class AdminController extends Controller
     public function login()
     {
         return view('admin.login');
+    }
+
+    public function newUser()
+    {
+        $users = User::where('user_verification_request', 1)->get();
+        return view('admin.new-users',compact('users'));
+    }
+
+    public function newUserProfile($id)
+    {
+        $user = User::find($id);
+        $userDetails = UserDetails::where('user_id',$id)->first();
+        $userAddress = UserAddress::where('user_id',$id)->first();
+        return view('admin.new-user-profile',compact('user','userDetails','userAddress'));
     }
 
     public function loginPost(Request $request)
