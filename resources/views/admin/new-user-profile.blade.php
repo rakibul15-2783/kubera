@@ -18,7 +18,7 @@
             <div class="row">
                 <div class="col-xl-6">
                     <div class=" ">
-                        <h5>Basic Info</h5>
+                        <h3>Basic Info</h3>
                     </div>
                     <div class=" ">
                         <b><label for="role">Role: </label></b><span> Investor</span>
@@ -41,7 +41,7 @@
                 </div>
                 <div class=" col-xl-6 text-content">
                     <div class=" ">
-                        <h5>Profile Image</h5>
+                        <h3>Profile Image</h3>
                     </div>
                     <div class=" ">
                         <img height="200px" width="200px" src="{{ asset('upload/profile/' . $userDetails->profile_image) }}" alt="Profile Image">
@@ -51,7 +51,7 @@
             <div class="row">
                 <div class=" col-xl-6">
                     <div class=" ">
-                        <h5>Address Info</h5>
+                        <h3>Address Info</h3>
                     </div>
                     <div class=" ">
                         <b><label for="country">Country: </label></b><span> {{ $userAddress->country }}</span>
@@ -71,13 +71,13 @@
                 </div><br>
                 <div class="col-xl-6">
                     <div class=" ">
-                        <h5>Bio</h5><span> {{ $userDetails->bio }}</span>
+                        <h3>Bio</h3><span> {{ $userDetails->bio }}</span>
                     </div><br>
                 </div>
             </div>
             <div class="text-center">
-                <button class="btn btn-success">Accept</button>
-                <button class="btn btn-danger">Deny</button>
+                <a href="{{ route('new.user.accept',['id' => $user->id]) }}" class="btn btn-success">Accept</a>
+                <a href="{{ route('new.user.deny',['id' => $user->id]) }}" class="btn btn-danger">Deny</a>
             </div>
     </div>
 @endsection

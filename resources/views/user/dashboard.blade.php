@@ -7,9 +7,9 @@
     <title>Document</title>
 </head>
 <body>
-<h2>Dashboard</h2>
-<div>
-    <a href="{{ route('logout') }}">log out</a>
-</div>
+    <h2>Dashboard</h2>
+    <div>
+        <a href="{{ route('logout') }}">log out</a>
+    </div>
 </body>
 </html>

@@ -59,6 +59,20 @@ class AdminController extends Controller
         return back()->withInput()->withErrors(['email' => 'Invalid Email or Password']);
     }
 
+    public function userAccept($id){
+        $user = User::find($id);
+
+        $user->user_verification_request = 0;
+        $user->user_verified = 1;
+        $user->save();
+
+        return redirect()->route('new.users');
+    }
+
+    public function userDeny($id){
+
+    }
+
     public function logout()
     {
         Auth::guard('admin')->logout();

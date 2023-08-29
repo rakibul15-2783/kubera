@@ -25,10 +25,13 @@
             </div>
         </li>
         @if(!$users->isEmpty())
+            @php
+                $sl = 1;
+            @endphp
             @foreach ($users as $user)
             <li class="list-group-item list-group-item">
                 <div class="row">
-                    <div class="col-md-1">SL</div>
+                    <div class="col-md-1">{{ $sl++ }}</div>
                     <div class="col-md-3">{{ $user->name }}</div>
                     <div class="col-md-3">{{ $user->email }}</div>
                     <div class="col-md-2">

@@ -36,6 +36,14 @@ class AuthController extends Controller
                     {
                         return redirect()->route('dashboard');
                     }
+                    elseif(auth()->user()->role == 1 && auth()->user()->user_verified == 0)
+                    {
+                        return redirect()->route('investor.profile');
+                    }
+                    elseif(auth()->user()->role == 2 && auth()->user()->user_verified == 0)
+                    {
+                        return redirect();
+                    }
                     else
                     {
                         return redirect()->route('user.role');

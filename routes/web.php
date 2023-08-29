@@ -36,7 +36,8 @@ Route::middleware('auth')->group(function () {
     Route::post('/investor-profile-update-post/{id}', [InsvestorController::class, 'profileUpdatePost'])->name('investor.profile.update.post');
     Route::get('/investor-profile', [InsvestorController::class, 'profile'])->name('investor.profile');
     Route::get('/entrepreneur', [EntrepreneurController::class, 'profileUpdate'])->name('entrepreneur');
-
+    Route::post('/entrepreneur-profile-update-post/{id}', [EntrepreneurController::class, 'profileUpdatePost'])->name('entrepreneur.profile.update.post');
+    Route::get('/entrepreneur-profile', [EntrepreneurController::class, 'profile'])->name('entrepreneur.profile');
 
     Route::middleware('user.access')->group(function () {
         Route::get('/dashboard', [UserController::class, 'dashboard'])->name('dashboard');
@@ -48,6 +49,8 @@ Route::middleware('admin.access')->group(function () {
     Route::get('/admin-dashboard', [AdminController::class, 'dashboard'])->name('admin.dashboard');
     Route::get('/new-users', [AdminController::class, 'newUser'])->name('new.users');
     Route::get('/new-user-profile/{id}', [AdminController::class, 'newUserProfile'])->name('new.user.profile');
+    Route::get('/new-user-accept/{id}', [AdminController::class, 'userAccept'])->name('new.user.accept');
+    Route::get('/new-user-deny/{id}', [AdminController::class, 'userDeny'])->name('new.user.deny');
     Route::get('/admin-change-password', [AdminController::class, 'changePassword'])->name('admin.password');
     Route::post('/admin-change-password-post/{id}', [AdminController::class, 'changePasswordPost'])->name('admin.password.post');
 });

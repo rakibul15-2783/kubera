@@ -17,10 +17,10 @@
                 <div class="row">
                     <div class="form-row col-xl-6">
                         <div class="form-group ">
-                            <h5>Basic Info</h5>
+                            <h3>Basic Info</h3>
                         </div>
                         <div class="form-group ">
-                            <b><label for="role">Role: </label></b><span> Investor</span>
+                            <b><label for="role">Role: </label></b><span> Entrepreneur</span>
                         </div>
                         <div class="form-group ">
                             <b><label for="name">Name: </label></b><span> {{ auth()->user()->name }}</span>
@@ -49,9 +49,9 @@
                             <h5>Bio</h5><span> {{ $userDetails->bio }}</span>
                         </div><br>
                         @if (auth()->user()->user_verification_request == 1 )
-                        <div class="form-group ">
+
                             <span class="btn btn-info">Verification Request Send</span>
-                        </div>
+
                         @endif
                         @if (auth()->user()->user_verified == 1 )
                         <div class="form-group ">
@@ -63,7 +63,7 @@
                 </div><br>
                 <div class="form-row col-xl-6">
                     <div class="form-group ">
-                        <h5>Address Info</h5>
+                        <h3>Address Info</h3>
                     </div>
                     <div class="form-group ">
                         <b><label for="country">Country: </label></b><span> {{ $userAddress->country }}</span>

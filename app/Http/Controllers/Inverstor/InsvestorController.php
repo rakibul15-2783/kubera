@@ -59,7 +59,7 @@ class InsvestorController extends Controller
 
         $userAddress->user_id = auth()->user()->id;
         $userAddress->country = $request->country;
-        $userAddress->address = $request->address;
+        $userAddress->address = $request->address; 
         $userAddress->state = $request->state;
         $userAddress->city = $request->city;
         $userAddress->zip_code = $request->zip_code;
