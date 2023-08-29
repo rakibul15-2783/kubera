@@ -58,4 +58,9 @@ class ProjectController extends Controller
     return redirect()->route('my.project');
 
     }
+
+    public function projectDetails(){
+        return view('user.entrepreneur.project-details');
+    }
+
 }

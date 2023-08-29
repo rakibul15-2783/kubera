@@ -82,6 +82,13 @@ class AdminController extends Controller
         return view('admin.projects',compact('projects'));
     }
 
+    public function projectDetails()
+    {
+
+
+        return view('admin.project-details');
+    }
+
     public function logout()
     {
         Auth::guard('admin')->logout();

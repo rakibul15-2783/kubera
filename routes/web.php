@@ -44,6 +44,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/my-project', [ProjectController::class, 'myProject'])->name('my.project');
     Route::get('/add-project', [ProjectController::class, 'addProject'])->name('add.project');
     Route::post('/project-submit', [ProjectController::class, 'projectSubmit'])->name('project.submit');
+    Route::get('/my-project-details', [ProjectController::class, 'projectDetails'])->name('my.project.details');
 
 
     //if user status is 1
@@ -62,6 +63,7 @@ Route::middleware('admin.access')->group(function () {
     Route::get('/admin-change-password', [AdminController::class, 'changePassword'])->name('admin.password');
     Route::post('/admin-change-password-post/{id}', [AdminController::class, 'changePasswordPost'])->name('admin.password.post');
     Route::get('/all-project', [AdminController::class, 'projects'])->name('all.project');
+    Route::get('/project-details', [AdminController::class, 'projectDetails'])->name('project.details');
 });
 
 
