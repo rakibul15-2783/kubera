@@ -5,22 +5,19 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class UserAddress extends Model
+class Project extends Model
 {
     use HasFactory;
 
     protected $fillable = [
-        'user_id',
-        'country',
-        'address',
-        'city',
-        'state',
-        'zip_code',
-
+        'user_id', 'status'
     ];
 
-    public function user()
-    {
+    public function projectDetails(){
+        return $this->hasOne(ProjectDetails::class);
+    }
+
+    public function user(){
         return $this->belongsTo(User::class);
     }
 }

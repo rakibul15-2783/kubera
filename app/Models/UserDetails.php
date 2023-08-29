@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class UserDetails extends Model
 {
     use HasFactory;
-    
+
     protected $fillable = [
         'user_id',
         'phone',
@@ -22,7 +22,7 @@ class UserDetails extends Model
 
     public function user()
     {
-        return $this->hasMany(User::class);
+        return $this->belongsTo(User::class);
     }
 
 }

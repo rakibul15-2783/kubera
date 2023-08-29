@@ -6,6 +6,7 @@ use App\Http\Controllers\User\UserController;
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Entrepreneur\EntrepreneurController;
 use App\Http\Controllers\Inverstor\InsvestorController;
+use App\Http\Controllers\Entrepreneur\ProjectController;
 
 /*
 |--------------------------------------------------------------------------
@@ -39,8 +40,15 @@ Route::middleware('auth')->group(function () {
     Route::post('/entrepreneur-profile-update-post/{id}', [EntrepreneurController::class, 'profileUpdatePost'])->name('entrepreneur.profile.update.post');
     Route::get('/entrepreneur-profile', [EntrepreneurController::class, 'profile'])->name('entrepreneur.profile');
 
+    Route::get('/dashboard', [UserController::class, 'dashboard'])->name('dashboard');
+    Route::get('/my-project', [ProjectController::class, 'myProject'])->name('my.project');
+    Route::get('/add-project', [ProjectController::class, 'addProject'])->name('add.project');
+    Route::post('/project-submit', [ProjectController::class, 'projectSubmit'])->name('project.submit');
+
+
+    //if user status is 1
     Route::middleware('user.access')->group(function () {
-        Route::get('/dashboard', [UserController::class, 'dashboard'])->name('dashboard');
+
     });
 });
 
