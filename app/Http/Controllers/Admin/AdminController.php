@@ -11,6 +11,8 @@ use App\Models\Admin;
 use App\Models\User;
 use App\Models\UserDetails;
 use App\Models\UserAddress;
+use App\Models\Project;
+use App\Models\ProjectDetails;
 
 class AdminController extends Controller
 {
@@ -71,6 +73,13 @@ class AdminController extends Controller
 
     public function userDeny($id){
 
+    }
+
+    public function projects()
+    {
+        $projects = Project::all();
+
+        return view('admin.projects',compact('projects'));
     }
 
     public function logout()

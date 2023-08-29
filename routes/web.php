@@ -61,6 +61,7 @@ Route::middleware('admin.access')->group(function () {
     Route::get('/new-user-deny/{id}', [AdminController::class, 'userDeny'])->name('new.user.deny');
     Route::get('/admin-change-password', [AdminController::class, 'changePassword'])->name('admin.password');
     Route::post('/admin-change-password-post/{id}', [AdminController::class, 'changePasswordPost'])->name('admin.password.post');
+    Route::get('/all-project', [AdminController::class, 'projects'])->name('all.project');
 });
 
 

@@ -13,7 +13,8 @@ class ProjectController extends Controller
 {
     public function myProject()
     {
-        return view('user.entrepreneur.projects');
+        $projects = Project::where('user_id', auth()->user()->id)->get();
+        return view('user.entrepreneur.projects',compact('projects'));
     }
 
     public function addProject()
@@ -54,7 +55,7 @@ class ProjectController extends Controller
     $projectDetails->project_id = $project->id;
     $projectDetails->save();
 
-    return view('user.entrepreneur.projects');
+    return redirect()->route('my.project');
 
     }
 }
