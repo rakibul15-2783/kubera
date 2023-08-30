@@ -18,7 +18,13 @@ class AdminController extends Controller
 {
     public function dashboard()
     {
-        return view('admin.dashboard');
+        $totalUser = User::where('user_verified', 1)->count();
+        $investor = User::where('role', 1)->count();
+        $entrepreneur = User::where('role', 2)->count();
+        $totalUser = User::where('user_verified', 1)->count();
+        $requestUser = User::where('user_verification_request', 1)->count();
+        $totalProject = Project::all()->count();
+        return view('admin.dashboard',compact('totalUser','requestUser','totalProject','investor','entrepreneur'));
     }
 
     public function login()
@@ -29,8 +35,22 @@ class AdminController extends Controller
     public function newUser()
     {
         $users = User::where('user_verification_request', 1)->get();
+        return view('admin.new-user-list',compact('users'));
+    }
 
-        return view('admin.new-users',compact('users'));
+    public function users()
+    {
+        $users = User::where('user_verified', 1)->get();
+        return view('admin.user-list',compact('users'));
+    }
+
+    public function userProfile($id)
+    {
+        $user = User::find($id);
+        $userDetails = UserDetails::where('user_id',$id)->first();
+        $userAddress = UserAddress::where('user_id',$id)->first();
+
+        return view('admin.user-profile',compact('user','userDetails','userAddress'));
     }
 
     public function newUserProfile($id)
@@ -78,24 +98,9 @@ class AdminController extends Controller
 
     }
 
-    public function projects()
-    {
-        $projects = Project::all();
-
-        return view('admin.projects',compact('projects'));
-    }
-
-    public function projectDetails($id)
-    {
-        $project = Project::find($id);
-
-        return view('admin.project-details',compact('project'));
-    }
-
     public function logout()
     {
         Auth::guard('admin')->logout();
-
         return redirect()->route('admin.login');
     }
 

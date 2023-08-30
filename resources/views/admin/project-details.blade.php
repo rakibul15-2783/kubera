@@ -26,6 +26,9 @@
                 <b><span >Project id: </span></b><span> ##000{{ $project->id }}</span>
             </div>
             <div class=" ">
+                <b><span >Entrepreneur Name: </span></b><span>{{ $project->user->name }}</span>
+            </div>
+            <div class=" ">
                 <b><span >Project Title: </span></b><span> {{ $project->projectDetails->project_title }}</span>
             </div>
             <div class=" ">

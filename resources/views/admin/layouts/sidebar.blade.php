@@ -15,8 +15,11 @@
                      <a href="{{ route('all.project') }}"  class="sidebar-link collapsed">
                          <span class="align-middle">Projects</span>
                      </a>
-                     <a href="{{ route('new.users') }}"  class="sidebar-link collapsed">
-                         <span class="align-middle">New User</span>
+                     <a href="{{ route('new.user.list') }}"  class="sidebar-link collapsed">
+                         <span class="align-middle">User Request</span>
+                     </a>
+                     <a href="{{ route('user.list') }}"  class="sidebar-link collapsed">
+                         <span class="align-middle">User</span>
                      </a>
                      <a href="{{ route('admin.password') }}"  class="sidebar-link collapsed">
                          <span class="align-middle">Change Password</span>

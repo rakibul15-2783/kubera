@@ -24,7 +24,7 @@
             </div>
         @else
             <div>
-                <a href="{{ route('logout') }}" class="btn btn-info">See Project</a>
+                <a href="{{ route('show.projects') }}" class="btn btn-info">See Project</a>
             </div>
         @endif
 
