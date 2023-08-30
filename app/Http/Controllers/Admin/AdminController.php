@@ -29,6 +29,7 @@ class AdminController extends Controller
     public function newUser()
     {
         $users = User::where('user_verification_request', 1)->get();
+
         return view('admin.new-users',compact('users'));
     }
 
@@ -37,6 +38,7 @@ class AdminController extends Controller
         $user = User::find($id);
         $userDetails = UserDetails::where('user_id',$id)->first();
         $userAddress = UserAddress::where('user_id',$id)->first();
+
         return view('admin.new-user-profile',compact('user','userDetails','userAddress'));
     }
 
@@ -61,7 +63,8 @@ class AdminController extends Controller
         return back()->withInput()->withErrors(['email' => 'Invalid Email or Password']);
     }
 
-    public function userAccept($id){
+    public function userAccept($id)
+    {
         $user = User::find($id);
 
         $user->user_verification_request = 0;
@@ -82,11 +85,11 @@ class AdminController extends Controller
         return view('admin.projects',compact('projects'));
     }
 
-    public function projectDetails()
+    public function projectDetails($id)
     {
+        $project = Project::find($id);
 
-
-        return view('admin.project-details');
+        return view('admin.project-details',compact('project'));
     }
 
     public function logout()

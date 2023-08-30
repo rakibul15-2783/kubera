@@ -34,7 +34,7 @@
                     <div class="col-md-1">{{ $sl++ }}</div>
                     <div class="col-md-3">{{ $project->user->name }}</div>
                     <div class="col-md-3">{{ $project->projectDetails->project_title }}</div>
-                    <div class="col-md-3"><a href="{{ route('project.details') }}" class="btn btn-sm btn-info">Details</a></div>
+                    <div class="col-md-3"><a href="{{ route('project.details',['id' => $project->id]) }}" class="btn btn-sm btn-info">Details</a></div>
                     <div class="col-md-2">{{ $project->created_at->format('Y-m-d') }}</div>
                 </div>
             </li>

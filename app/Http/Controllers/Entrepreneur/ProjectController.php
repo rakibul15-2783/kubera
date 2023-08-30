@@ -24,7 +24,6 @@ class ProjectController extends Controller
 
     public function projectSubmit(ProjectValidation $request)
     {
-
     $project = new Project();
     $projectDetails = new ProjectDetails();
 
@@ -59,8 +58,61 @@ class ProjectController extends Controller
 
     }
 
-    public function projectDetails(){
-        return view('user.entrepreneur.project-details');
+    public function editProject($id){
+
+        $project = Project::find($id);
+        return view('user.entrepreneur.edit-project',compact('project'));
+    }
+
+    public function updateProject(ProjectValidation $request, $id)
+    {
+        $project = Project::find($id);
+        $projectDetails = ProjectDetails::where('project_id', $project->id)->first();
+
+        $projectDetails->project_title = $request->project_title;
+        $projectDetails->project_category = $request->project_category;
+        $projectDetails->description = $request->description;
+        $projectDetails->current_status = $request->current_status;
+        $projectDetails->estimate_budget = $request->estimate_budget;
+        $projectDetails->is_donated = $request->is_donated;
+        $projectDetails->donation_amount = $request->donation_amount;
+        $projectDetails->prcentage_of_completion = $request->prcentage_of_completion;
+        $projectDetails->team_members = $request->team_members;
+        $projectDetails->your_role = $request->your_role;
+
+        if ($request->hasFile('document')) {
+
+            Storage::disk('public')->delete($projectDetails->document);
+
+            $document = $request->file('document');
+            $documentName = rand() . '.' . $document->getClientOriginalExtension();
+            $documentPath = 'upload/documents/' . $documentName;
+            Storage::disk('public')->put($documentPath, file_get_contents($document));
+            $document->move(public_path('upload/documents/'), $documentName);
+            $projectDetails->document = $documentPath;
+        }
+
+        $projectDetails->save();
+
+        return redirect()->route('my.project');
+
+    }
+
+    public function projectDetails($id)
+    {
+        $project = Project::find($id);
+        return view('user.entrepreneur.project-details',compact('project'));
+    }
+
+    public function deleteProject($id)
+    {
+        $project = Project::find($id);
+        $projectDetails = ProjectDetails::where('project_id', $project->id)->first();
+
+        $project->delete();
+        $projectDetails->delete();
+
+        return redirect()->route('my.project');
     }
 
 }
