@@ -53,7 +53,7 @@
                             <b><span >Document: </span></b><span> </span>
                         </div>
                         <div class="text-center">
-                            <a href="{{ route('investor.message') }}" class="btn btn-sm btn-info">Message Here</a>
+                            <a href="{{ route('investor.message',['projectId' => $project->id]) }}" class="btn btn-sm btn-info">Message Here</a>
                         </div><br>
                     </div>
                 </div>

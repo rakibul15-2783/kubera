@@ -50,7 +50,7 @@ class User extends Authenticatable implements MustVerifyEmail
 
     public function userDetails()
     {
-        return $this->belongsTo(UserDetail::class);
+        return $this->belongsTo(UserDetails::class);
     }
 
     public function userAddresses()
@@ -61,5 +61,15 @@ class User extends Authenticatable implements MustVerifyEmail
     public function projects()
     {
         return $this->hasMany(Project::class);
+    }
+
+    public function messages()
+    {
+        return $this->hasMany(Message::class);
+    }
+
+    public function conversations()
+    {
+        return $this->hasMany(Conversation::class);
     }
 }

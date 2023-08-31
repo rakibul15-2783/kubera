@@ -13,6 +13,10 @@ class Conversation extends Model
         'user_id', 'project_id', 'message_id', 'conversation'
     ];
 
+    public function user(){
+        return $this->belongsTo(User::class);
+    }
+
     public function message(){
         return $this->belongsTo(Message::class);
     }
