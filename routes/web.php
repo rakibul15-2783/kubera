@@ -5,11 +5,12 @@ use App\Http\Controllers\Auth\AuthController;
 use App\Http\Controllers\User\UserController;
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Entrepreneur\EntrepreneurController;
-use App\Http\Controllers\Inverstor\InsvestorController;
+use App\Http\Controllers\Investor\InsvestorController;
 use App\Http\Controllers\Entrepreneur\ProjectController;
 use App\Http\Controllers\Admin\AdminProjectController;
 use App\Http\Controllers\Investor\InvestorProjectController;
-use App\Http\Controllers\Entrepreneur\MessageController;
+use App\Http\Controllers\Entrepreneur\EntrepreneurMessageController;
+use App\Http\Controllers\Investor\InvestorMessageController;
 
 /*
 |--------------------------------------------------------------------------
@@ -54,11 +55,12 @@ Route::middleware('auth')->group(function () {
         Route::get('/edit-project/{id}', [ProjectController::class, 'editProject'])->name('edit.project');
         Route::post('/update-project/{id}', [ProjectController::class, 'updateProject'])->name('update.project');
         Route::get('/delete-project/{id}', [ProjectController::class, 'deleteProject'])->name('delete.project');
-        Route::get('/message', [ProjectController::class, 'deleteProject'])->name('delete.project');
+        Route::get('/entrepreneur-message', [EntrepreneurMessageController::class, 'message'])->name('entrepreneur.message');
 
         //investor route
         Route::get('/show-projects', [InvestorProjectController::class, 'projects'])->name('show.projects');
         Route::get('/project-info/{id}', [InvestorProjectController::class, 'projectDetails'])->name('project.info');
+        Route::get('/investor-message', [InvestorMessageController::class, 'message'])->name('investor.message');
     });
 
     //if user status is 1

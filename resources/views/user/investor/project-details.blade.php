@@ -14,7 +14,6 @@
     <div class="row">
         <h2>Project Information</h2>
         <div class="container">
-            <div class="col-md-12 col-lg-12  p-3">
                 <div class="row card">
                     <div class="col-lg-6">
                         <div class=" ">
@@ -54,11 +53,10 @@
                             <b><span >Document: </span></b><span> </span>
                         </div>
                         <div class="text-center">
-                            <a href="" class="btn btn-sm btn-info">Message Here</a>
+                            <a href="{{ route('investor.message') }}" class="btn btn-sm btn-info">Message Here</a>
                         </div><br>
                     </div>
                 </div>
-            </div>
         </div>
     </div>
 </div>

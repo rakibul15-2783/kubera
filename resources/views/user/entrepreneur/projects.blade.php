@@ -49,7 +49,7 @@
                                 <div class="col-md-2"><a href="{{ route('my.project.details',['id' => $project->id]) }}" class="btn btn-sm btn-info">Details</a></div>
                                 <div class="col-md-3">{{ $project->created_at->format('Y-m-d') }}</div>
                                 <div class="col-md-2">
-                                    <a href="" class="btn btn-info btn-sm">Message</a>
+                                    <a href="{{ route('message') }}" class="btn btn-info btn-sm">Message</a>
                                     <a href="{{ route('edit.project',['id' => $project->id]) }}" class="btn btn-info btn-sm">Edit</a>
                                     <a href="{{ route('delete.project',['id' => $project->id]) }}" class="btn btn-danger btn-sm">Delete</a>
                                     {{-- <button type="button" class="btn btn-sm btn-danger" data-toggle="modal" data-target="#exampleModal{{ $project->id }}">Delete</button> --}}

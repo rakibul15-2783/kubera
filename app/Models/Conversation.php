@@ -12,4 +12,8 @@ class Conversation extends Model
     protected $fillable = [
         'user_id', 'project_id', 'message_id', 'conversation'
     ];
+
+    public function message(){
+        return $this->belongsTo(Message::class);
+    }
 }

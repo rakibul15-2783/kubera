@@ -12,4 +12,13 @@ class Message extends Model
     protected $fillable = [
         'user_id', 'project_id'
     ];
+
+    public function project(){
+        return $this->belongsTo(Project::class);
+    }
+
+    public function conversations()
+    {
+        return $this->hasMany(conversation::class);
+    }
 }
