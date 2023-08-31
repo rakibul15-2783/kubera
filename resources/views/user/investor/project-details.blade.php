@@ -53,6 +53,9 @@
                         <div class=" ">
                             <b><span >Document: </span></b><span> </span>
                         </div>
+                        <div class="text-center">
+                            <a href="" class="btn btn-sm btn-info">Message Here</a>
+                        </div><br>
                     </div>
                 </div>
             </div>

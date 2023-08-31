@@ -9,6 +9,7 @@ use App\Http\Controllers\Inverstor\InsvestorController;
 use App\Http\Controllers\Entrepreneur\ProjectController;
 use App\Http\Controllers\Admin\AdminProjectController;
 use App\Http\Controllers\Investor\InvestorProjectController;
+use App\Http\Controllers\Entrepreneur\MessageController;
 
 /*
 |--------------------------------------------------------------------------
@@ -53,6 +54,7 @@ Route::middleware('auth')->group(function () {
         Route::get('/edit-project/{id}', [ProjectController::class, 'editProject'])->name('edit.project');
         Route::post('/update-project/{id}', [ProjectController::class, 'updateProject'])->name('update.project');
         Route::get('/delete-project/{id}', [ProjectController::class, 'deleteProject'])->name('delete.project');
+        Route::get('/message', [ProjectController::class, 'deleteProject'])->name('delete.project');
 
         //investor route
         Route::get('/show-projects', [InvestorProjectController::class, 'projects'])->name('show.projects');
