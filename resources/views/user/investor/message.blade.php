@@ -9,11 +9,11 @@
 </head>
 <body>
 <section style="background-color: #eee;">
-    <div class="container py-5">
+    <div class="container py-3">
 
       <div class="row">
 
-        <div class="col-md-6 col-lg-5 col-xl-4 mb-4 mb-md-0 card">
+        <div class="col-md-6 col-lg-5 col-xl-4 mb-4 mb-md-0  card ">
 
             <div class=" ">
                 <h3>Project Details</h3>
@@ -54,65 +54,67 @@
 
         </div>
 
-        <div class="col-md-6 col-lg-7 col-xl-8">
+        <div class="col-md-6 col-lg-7 col-xl-8 card ml-4">
 
-          <ul class="list-unstyled">
-            @if($conversations != null)
-                @foreach ($conversations as $conversation)
-                @if ($conversation->user->role == 1 )
-                <li class="d-flex justify-content-between mb-4">
-                    <div class="card w-100">
-                    <div class="card-header d-flex justify-content-between p-3">
-                        <p class="fw-bold mb-0">{{ $conversation->user_id }}</p>
-                        <p class="text-muted small mb-0"><i class="far fa-clock"></i> </p>
-                    </div>
-                    <div class="card-body">
-                        <p class="mb-0">
-                            {{ $conversation->conversation }}
-                        </p>
-                    </div>
-                    </div>
-                    <img src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/avatar-5.webp" alt="avatar"
-                    class="rounded-circle d-flex align-self-start ms-3 shadow-1-strong" width="60">
-                </li>
+            <div style="max-height: 720px; overflow-y: auto;">
+                <ul class="list-unstyled">
+                    @if($conversations != null)
+                        @foreach ($conversations as $conversation)
+                        @if ($conversation->user->role == 1 )
+                        <li class="d-flex justify-content-between mb-4">
+                            <div class="card w-100">
+                            <div class="card-header d-flex justify-content-between p-3">
+                                <p class="fw-bold mb-0">Me</p>
+                                <p class="text-muted small mb-0"><i class="far fa-clock"></i> </p>
+                            </div>
+                            <div class="card-body">
+                                <p class="mb-0">
+                                    {{ $conversation->conversation }}
+                                </p>
+                            </div>
+                            </div>
+                            <img src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/avatar-5.webp" alt="avatar"
+                            class="rounded-circle d-flex align-self-start ms-3 shadow-1-strong" width="60">
+                        </li>
 
-                @else
-                <li class=" mb-4">
-                    <img src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/avatar-6.webp" alt="avatar"
-                    class="rounded-circle d-flex align-self-start me-3 shadow-1-strong" width="60">
-                    <div class="card">
-                    <div class="card-header d-flex justify-content-between p-3">
-                        <p class="fw-bold mb-0">{{ $conversation->user_id }}</p>
-                        <p class="text-muted small mb-0"><i class="far fa-clock"></i> </p>
-                    </div>
-                    <div class="card-body">
-                        <p class="mb-0">
-                            {{ $conversation->conversation }}
-                        </p>
-                    </div>
-                    </div>
-                </li>
-                @endif
-                @endforeach
-             @endif
+                        @else
+                        <li class="d-flex justify-content-between mb-4">
+                            <img src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/avatar-6.webp" alt="avatar"
+                                 class="rounded-circle d-flex align-self-start me-3 shadow-1-strong" width="60">
+                            <div class="card w-100">
+                                <div class="card-header d-flex justify-content-between p-3">
+                                    <p class="fw-bold mb-0">Entrepreneur id = {{ $conversation->user_id }}</p>
+                                    <p class="text-muted small mb-0"><i class="far fa-clock"></i> </p>
+                                </div>
+                                <div class="card-body">
+                                    <p class="mb-0">
+                                        {{ $conversation->conversation }}
+                                    </p>
+                                </div>
+                            </div>
+                        </li>
+                        @endif
+                        @endforeach
+                     @endif
 
-            <form action="{{ route('investor.message.post',['projectId' => $project->id]) }}" method="POST">
-                @csrf
-                <li class="bg-white mb-3">
-                <div class="form-outline">
-                    <input type="text" name="message" class="form-control p-4"  placeholder="Message here...">
-                </div>
-                </li>
-                <button type="submit" class="btn btn-info btn-rounded float-end">Send</button>
-            </form>
-          </ul>
+                    <form action="{{ route('investor.message.post',['projectId' => $project->id]) }}" method="POST">
+                        @csrf
+                        <li class="bg-white mb-3">
+                        <div class="form-outline">
+                            <input type="text" name="message" class="form-control p-4"  placeholder="Message here...">
+                        </div>
+                        </li>
+                        <button type="submit" class="btn btn-info btn-rounded float-end">Send</button>
+                    </form>
+                  </ul>
+            </div>
 
         </div>
 
       </div>
 
     </div>
-  </section>
+</section>
 
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.min.js" integrity="sha384-cuYeSxntonz0PPNlHhBs68uyIAVpIIOZZ5JqeqvYYIcEL727kskC66kF92t6Xl2V" crossorigin="anonymous"></script>

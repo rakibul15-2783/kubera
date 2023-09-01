@@ -5,7 +5,7 @@ use App\Http\Controllers\Auth\AuthController;
 use App\Http\Controllers\User\UserController;
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Entrepreneur\EntrepreneurController;
-use App\Http\Controllers\Investor\InsvestorController;
+use App\Http\Controllers\Investor\InvestorController;
 use App\Http\Controllers\Entrepreneur\ProjectController;
 use App\Http\Controllers\Admin\AdminProjectController;
 use App\Http\Controllers\Investor\InvestorProjectController;
@@ -37,9 +37,9 @@ Route::middleware('guest')->group(function () {
 //user section
 Route::middleware('auth')->group(function () {
     Route::get('/user-role', [UserController::class, 'userRole'])->name('user.role');
-    Route::get('/investor', [InsvestorController::class, 'profileUpdate'])->name('investor');
-    Route::post('/investor-profile-update-post/{id}', [InsvestorController::class, 'profileUpdatePost'])->name('investor.profile.update.post');
-    Route::get('/investor-profile', [InsvestorController::class, 'profile'])->name('investor.profile');
+    Route::get('/investor', [InvestorController::class, 'profileUpdate'])->name('investor');
+    Route::post('/investor-profile-update-post/{id}', [InvestorController::class, 'profileUpdatePost'])->name('investor.profile.update.post');
+    Route::get('/investor-profile', [InvestorController::class, 'profile'])->name('investor.profile');
     Route::get('/entrepreneur', [EntrepreneurController::class, 'profileUpdate'])->name('entrepreneur');
     Route::post('/entrepreneur-profile-update-post/{id}', [EntrepreneurController::class, 'profileUpdatePost'])->name('entrepreneur.profile.update.post');
     Route::get('/entrepreneur-profile', [EntrepreneurController::class, 'profile'])->name('entrepreneur.profile');

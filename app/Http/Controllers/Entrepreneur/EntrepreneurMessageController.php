@@ -35,7 +35,6 @@ class EntrepreneurMessageController extends Controller
 
         $conversation = new Conversation();
         $conversation->user_id = $userId;
-        $conversation->project_id = $projectId;
         $conversation->message_id = $messageId;
         $conversation->conversation = $request->message;
         // dd($conversation);

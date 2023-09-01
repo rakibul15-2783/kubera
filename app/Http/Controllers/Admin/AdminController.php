@@ -91,7 +91,7 @@ class AdminController extends Controller
         $user->user_verified = 1;
         $user->save();
 
-        return redirect()->route('new.users');
+        return redirect()->route('new.user.list');
     }
 
     public function userDeny($id){

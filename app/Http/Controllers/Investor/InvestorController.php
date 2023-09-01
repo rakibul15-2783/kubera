@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Inverstor;
+namespace App\Http\Controllers\Investor;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Storage;
@@ -11,7 +11,7 @@ use App\Models\UserAddress;
 use App\Enums\UserRole;
 use App\Http\Requests\InvestorProfileValidation;
 
-class InsvestorController extends Controller
+class InvestorController extends Controller
 {
     public function profileUpdate()
     {
@@ -59,7 +59,7 @@ class InsvestorController extends Controller
 
         $userAddress->user_id = auth()->user()->id;
         $userAddress->country = $request->country;
-        $userAddress->address = $request->address; 
+        $userAddress->address = $request->address;
         $userAddress->state = $request->state;
         $userAddress->city = $request->city;
         $userAddress->zip_code = $request->zip_code;
@@ -68,7 +68,8 @@ class InsvestorController extends Controller
         return redirect()->route('investor.profile');
     }
 
-    public function profile(){
+    public function profile()
+    {
         $user = auth()->user()->id;
         $userDetails = UserDetails::where('user_id',$user)->first();
         $userAddress = UserAddress::where('user_id',$user)->first();

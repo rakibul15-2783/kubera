@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('project_details', function (Blueprint $table) {
             $table->id();
-            $table->integer('project_id');
+            $table->unsignedBigInteger('project_id');
             $table->string('project_title');
             $table->text('description')->nullable();
             $table->string('project_category'); //another table
@@ -26,6 +26,10 @@ return new class extends Migration
             $table->string('your_role');
             $table->string('document')->nullable();//another table
             $table->timestamps();
+
+            $table->foreign('project_id')
+                ->references('id')
+                ->on('projects');
         });
     }
 
