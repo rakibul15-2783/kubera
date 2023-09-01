@@ -15,8 +15,8 @@ return new class extends Migration
             $table->id();
             $table->integer('project_id');
             $table->string('project_title');
-            $table->text('description');
-            $table->string('project_category');
+            $table->text('description')->nullable();
+            $table->string('project_category'); //another table
             $table->tinyInteger('current_status')->comment('0=planning, 1=processing');
             $table->float('estimate_budget');
             $table->boolean('is_donated');
@@ -24,7 +24,7 @@ return new class extends Migration
             $table->integer('prcentage_of_completion');
             $table->string('team_members');
             $table->string('your_role');
-            $table->string('document')->nullable();
+            $table->string('document')->nullable();//another table
             $table->timestamps();
         });
     }

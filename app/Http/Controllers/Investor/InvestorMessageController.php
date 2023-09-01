@@ -20,9 +20,15 @@ class InvestorMessageController extends Controller
             ->where('user_id', $userId)
             ->first();
 
+        $conversations = null;
 
-            $conversations = Conversation::find($message->id)->get();
-            return view('user.investor.message',compact('project','message','conversations'));
+        if($message)
+        {
+            $conversations = Conversation::where('message_id', $message->id)->get();
+        }
+
+
+        return view('user.investor.message',compact('project','message','conversations'));
 
     }
 

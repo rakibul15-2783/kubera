@@ -11,7 +11,7 @@ use App\Models\ProjectDetails;
 
 class ProjectController extends Controller
 {
-    public function myProject()
+    public function myProject() 
     {
         $projects = Project::where('user_id', auth()->user()->id)->get();
         return view('user.entrepreneur.projects',compact('projects'));
