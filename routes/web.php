@@ -48,22 +48,30 @@ Route::middleware('auth')->group(function () {
         Route::get('/dashboard', [UserController::class, 'dashboard'])->name('dashboard');
 
         //entrepreneur route
-        Route::get('/my-project', [ProjectController::class, 'myProject'])->name('my.project');
-        Route::get('/add-project', [ProjectController::class, 'addProject'])->name('add.project');
-        Route::post('/project-submit', [ProjectController::class, 'projectSubmit'])->name('project.submit');
-        Route::get('/my-project-details/{id}', [ProjectController::class, 'projectDetails'])->name('my.project.details');
-        Route::get('/edit-project/{id}', [ProjectController::class, 'editProject'])->name('edit.project');
-        Route::post('/update-project/{id}', [ProjectController::class, 'updateProject'])->name('update.project');
-        Route::get('/delete-project/{id}', [ProjectController::class, 'deleteProject'])->name('delete.project');
-        Route::get('/entrepreneur-messages/{projectId}', [EntrepreneurMessageController::class, 'messages'])->name('entrepreneur.messages');
-        Route::get('/entrepreneur-message/{messageId}', [EntrepreneurMessageController::class, 'message'])->name('entrepreneur.message');
-        Route::post('/entrepreneur-message-post/{messageId}', [EntrepreneurMessageController::class, 'messagePost'])->name('entrepreneur.message.post');
+        Route::middleware('entrepreneur')->group(function () {
+            Route::get('/my-project', [ProjectController::class, 'myProject'])->name('my.project');
+            Route::get('/add-project', [ProjectController::class, 'addProject'])->name('add.project');
+            Route::post('/project-submit', [ProjectController::class, 'projectSubmit'])->name('project.submit');
+            Route::get('/my-project-details/{id}', [ProjectController::class, 'projectDetails'])->name('my.project.details');
+            Route::get('/edit-project/{id}', [ProjectController::class, 'editProject'])->name('edit.project');
+            Route::post('/update-project/{id}', [ProjectController::class, 'updateProject'])->name('update.project');
+            Route::get('/delete-project/{id}', [ProjectController::class, 'deleteProject'])->name('delete.project');
+            Route::get('/entrepreneur-messages/{projectId}', [EntrepreneurMessageController::class, 'messages'])->name('entrepreneur.messages');
+            Route::get('/entrepreneur-message/{messageId}', [EntrepreneurMessageController::class, 'message'])->name('entrepreneur.message');
+            Route::post('/entrepreneur-message-post/{messageId}', [EntrepreneurMessageController::class, 'messagePost'])->name('entrepreneur.message.post');
+
+        });
 
         //investor route
-        Route::get('/show-projects', [InvestorProjectController::class, 'projects'])->name('show.projects');
-        Route::get('/project-info/{id}', [InvestorProjectController::class, 'projectDetails'])->name('project.info');
-        Route::get('investor-message/{projectId}', [InvestorMessageController::class, 'message'])->name('investor.message');
-        Route::post('/investor-message-post/{projectId}', [InvestorMessageController::class, 'messagePost'])->name('investor.message.post');
+        Route::middleware('investor')->group(function () {
+            Route::get('/show-projects', [InvestorProjectController::class, 'projects'])->name('show.projects');
+            Route::get('/project-info/{id}', [InvestorProjectController::class, 'projectDetails'])->name('project.info');
+            Route::get('investor-message/{projectId}', [InvestorMessageController::class, 'message'])->name('investor.message');
+            Route::post('/investor-message-post/{projectId}', [InvestorMessageController::class, 'messagePost'])->name('investor.message.post');
+        });
+
+
+
     });
 
     //if user status is 1
