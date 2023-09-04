@@ -97,7 +97,9 @@ class AdminController extends Controller
     public function searchUsers(Request $request)
     {
         $search = $request->input('search');
-        $users = User::where('email', 'LIKE', '%' . $search . '%')->get();
+        $users = User::where('email', 'LIKE', '%' . $search . '%')
+            ->orWhere('name', 'LIKE', '%' . $search . '%')
+            ->get();
 
         return view('admin.search-user', compact('users'));
     }

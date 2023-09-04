@@ -22,7 +22,7 @@
             <form action="{{ route('search.user.list') }}" method="GET">
 
                 <div class="input-group">
-                    <input class="form-control" name="search" placeholder="Search by email..." type="text">
+                    <input class="form-control" name="search" placeholder="Search by email / name..." type="text">
                     <div class="input-group-append">
                         <button type="submit" class="btn btn-info">Search</button>
                     </div>
@@ -34,10 +34,10 @@
         <ul class="list-group">
             <li class="list-group-item list-group-item">
                 <div class="row">
-                    <div class="col-md-1"><b>SL</b></div>
-                    <div class="col-md-3"><b>Name</b></div>
-                    <div class="col-md-3"><b>Email</b></div>
-                    <div class="col-md-1"><b>Role</b></div>
+                    <div class="col-md-2"><b>SL</b></div>
+                    <div class="col-md-2"><b>Name</b></div>
+                    <div class="col-md-2"><b>Email</b></div>
+                    <div class="col-md-2"><b>Role</b></div>
                     <div class="col-md-2"><b>Details</b></div>
                     <div class="col-md-2"><b>Last Login</b></div>
                 </div>
@@ -50,10 +50,10 @@
             @foreach ($users as $user)
                 <li class="list-group-item list-group-item">
                     <div class="row">
-                        <div class="col-md-1">{{ $sl++ }}</div>
-                        <div class="col-md-3">{{ $user->name }}</div>
-                        <div class="col-md-3">{{ $user->email }}</div>
-                        <div class="col-md-1">
+                        <div class="col-md-2">{{ $sl++ }}</div>
+                        <div class="col-md-2">{{ $user->name }}</div>
+                        <div class="col-md-2">{{ $user->email }}</div>
+                        <div class="col-md-2">
                             @if ($user->role == 1)
                                 <span>Investor</span>
                             @else

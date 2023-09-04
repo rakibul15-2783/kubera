@@ -70,8 +70,6 @@ Route::middleware('auth')->group(function () {
             Route::post('/investor-message-post/{projectId}', [InvestorMessageController::class, 'messagePost'])->name('investor.message.post');
         });
 
-
-
     });
 
     //if user status is 1
