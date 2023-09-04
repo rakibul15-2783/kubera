@@ -22,6 +22,19 @@
             <a href="{{ route('add.project') }}" class="btn btn-info"> Add Project</a>
         </div><br>
 
+        <div class="row">
+            <div class="col-md-6"></div>
+            <div class="col-md-6">
+                <form action="" method="GET">
+                    <div class="input-group">
+                        <input class="form-control" name="search" placeholder="Search by email..." type="text">
+                        <div class="input-group-append">
+                            <button type="submit" class="btn btn-info">Search</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div><br>
         @if(!$projects->isEmpty())
             <div class="card shadow">
                 <ul class="list-group">

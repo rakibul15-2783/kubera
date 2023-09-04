@@ -94,8 +94,12 @@ class AdminController extends Controller
         return redirect()->route('new.user.list');
     }
 
-    public function userDeny($id){
+    public function searchUsers(Request $request)
+    {
+        $search = $request->input('search');
+        $users = User::where('email', 'LIKE', '%' . $search . '%')->get();
 
+        return view('admin.search-user', compact('users'));
     }
 
     public function logout()
@@ -124,7 +128,6 @@ class AdminController extends Controller
                 return back()->with('newPassError', 'Password confirmation does not match.');
             }
              else {
-                // Update the admin's password with the new hashed password
                 $admin->password = Hash::make($new_password);
                 $admin->save();
 

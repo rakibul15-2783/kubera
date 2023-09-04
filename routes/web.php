@@ -84,6 +84,7 @@ Route::middleware('auth')->group(function () {
 Route::middleware('admin.access')->group(function () {
     Route::get('/admin-dashboard', [AdminController::class, 'dashboard'])->name('admin.dashboard');
     Route::get('/user-list', [AdminController::class, 'users'])->name('user.list');
+    Route::get('/search-user-list', [AdminController::class, 'searchUsers'])->name('search.user.list');
     Route::get('/user-profile/{id}', [AdminController::class, 'userProfile'])->name('user.profile');
     Route::get('/new-user-list', [AdminController::class, 'newUser'])->name('new.user.list');
     Route::get('/new-user-profile/{id}', [AdminController::class, 'newUserProfile'])->name('new.user.profile');
