@@ -57,7 +57,7 @@
                         @endforeach
 
 
-                        <form action="{{ route('entrepreneur.message.post',['messageId' => $messageid]) }}" method="POST">
+                        <form action="{{ route('entrepreneur.message.post',['messageId' => $message->id]) }}" method="POST">
                             @csrf
                             <li class="bg-white mb-3">
                             <div class="form-outline">

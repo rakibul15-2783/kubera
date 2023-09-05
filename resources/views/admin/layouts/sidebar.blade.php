@@ -21,6 +21,9 @@
                      <a href="{{ route('user.list') }}"  class="sidebar-link collapsed">
                          <span class="align-middle">User</span>
                      </a>
+                     <a href="{{ route('plan') }}"  class="sidebar-link collapsed">
+                         <span class="align-middle">Subscription</span>
+                     </a>
                      <a href="{{ route('admin.password') }}"  class="sidebar-link collapsed">
                          <span class="align-middle">Change Password</span>
                      </a>

@@ -11,6 +11,7 @@ use App\Http\Controllers\Admin\AdminProjectController;
 use App\Http\Controllers\Investor\InvestorProjectController;
 use App\Http\Controllers\Entrepreneur\EntrepreneurMessageController;
 use App\Http\Controllers\Investor\InvestorMessageController;
+use App\Http\Controllers\Admin\PlanController;
 
 /*
 |--------------------------------------------------------------------------
@@ -88,6 +89,8 @@ Route::middleware('admin.access')->group(function () {
     Route::get('/new-user-profile/{id}', [AdminController::class, 'newUserProfile'])->name('new.user.profile');
     Route::get('/new-user-accept/{id}', [AdminController::class, 'userAccept'])->name('new.user.accept');
     Route::get('/new-user-deny/{id}', [AdminController::class, 'userDeny'])->name('new.user.deny');
+    Route::get('/plan', [PlanController::class, 'plan'])->name('plan');
+    Route::post('/plan-post', [PlanController::class, 'planPost'])->name('plan.post');
     Route::get('/admin-change-password', [AdminController::class, 'changePassword'])->name('admin.password');
     Route::post('/admin-change-password-post/{id}', [AdminController::class, 'changePasswordPost'])->name('admin.password.post');
     Route::get('/all-project', [AdminProjectController::class, 'projects'])->name('all.project');

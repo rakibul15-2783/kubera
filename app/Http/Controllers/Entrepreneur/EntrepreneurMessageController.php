@@ -18,11 +18,11 @@ class EntrepreneurMessageController extends Controller
 
     public function message($messageId)
     {
-        $messageid = $messageId;
-
+        $message = Message::where('id', $messageId)->first();
+        // dd($message);
         $conversations = Conversation::where('message_id',$messageId)->get();
         // dd($messageid);
-        return view('user.entrepreneur.user-based-message',compact('conversations','messageid'));
+        return view('user.entrepreneur.user-based-message',compact('conversations','message'));
     }
 
     public function messagePost(Request $request, $messageId)
