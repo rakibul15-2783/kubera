@@ -111,6 +111,23 @@ class AdminController extends Controller
         return view('admin.points', compact('users'));
     }
 
+    public function donatePoint(Request $request)
+    {
+        $userId = $request->user_id;
+        $points = $request->points;
+        $userDetails = UserDetails::where('user_id',$userId)->first();
+
+        if($userDetails)
+        {
+            $userDetails->points = $points;
+            $userDetails->save();
+
+            return back();
+        }
+
+        return back();
+    }
+
     public function logout()
     {
         Auth::guard('admin')->logout();

@@ -18,7 +18,53 @@
 
     <div class="row">
         <div class="col-md-6">
-            <button class="btn btn-primary">Give points</button>
+               <!-- Button trigger modal -->
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#pointModal">
+                Give Points
+            </button>
+
+            <!-- Modal -->
+            <div class="modal fade" id="pointModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Give Points</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    </div>
+                    <form action="{{ route('donate.point') }}" method="POST">
+                        @csrf
+                        <div class="modal-body">
+                            <div class="form-group">
+                                <label for="user_id">Entrepreneur</label>
+                                <select name="user_id" id="" class="form-control">
+                                    <option value="">-----Select Entrepreneur-----</option>
+                                    @foreach ($users as $user)
+                                        <option value="{{ $user->id }} ">{{ $user->email }} </option>
+                                    @endforeach
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="points">Points</label>
+                                <select name="points" id="" class="form-control">
+                                    <option value="">-----Select points-----</option>
+                                    <option value="10">10</option>
+                                    <option value="20">20</option>
+                                    <option value="30">30</option>
+                                    <option value="40">40</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <button type="submit" class="btn btn-primary">Send</button>
+                        </div>
+                    </form>
+                </div>
+                </div>
+            </div>
+            <br><br>
         </div>
         <div class="col-md-6"></div>
     </div><br>
@@ -43,7 +89,7 @@
                         <div class="col-md-3">{{ $sl++ }}</div>
                         <div class="col-md-3">{{ $user->name }}</div>
                         <div class="col-md-3">{{ $user->email }}</div>
-                        <div class="col-md-3">{{ $user->points }}</div>
+                        <div class="col-md-3">{{ $user->userDetails->points }}</div>
                     </div>
                 </li>
             @endforeach

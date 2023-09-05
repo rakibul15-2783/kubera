@@ -91,6 +91,7 @@ Route::middleware('admin.access')->group(function () {
     Route::get('/user-profile/{id}', [AdminController::class, 'userProfile'])->name('user.profile');
     Route::get('/new-user-list', [AdminController::class, 'newUser'])->name('new.user.list');
     Route::get('/points', [AdminController::class, 'point'])->name('point');
+    Route::post('/donate-points', [AdminController::class, 'donatePoint'])->name('donate.point');
     Route::get('/new-user-profile/{id}', [AdminController::class, 'newUserProfile'])->name('new.user.profile');
     Route::get('/new-user-accept/{id}', [AdminController::class, 'userAccept'])->name('new.user.accept');
     Route::get('/new-user-deny/{id}', [AdminController::class, 'userDeny'])->name('new.user.deny');
