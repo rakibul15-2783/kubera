@@ -17,6 +17,7 @@ class UserDetails extends Model
         'passport_no',
         'profile_image',
         'bio',
+        'points',
 
     ];
 

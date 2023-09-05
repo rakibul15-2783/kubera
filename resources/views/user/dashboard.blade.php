@@ -21,6 +21,7 @@
         @if (auth()->user()->role == 2)
             <div>
                 <a href="{{ route('my.project') }}" class="btn btn-info">Project</a>
+                <a href="{{ route('subscription') }}" class="btn btn-info">Subscription</a>
             </div>
         @else
             <div>

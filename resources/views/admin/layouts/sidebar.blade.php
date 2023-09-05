@@ -24,6 +24,9 @@
                      <a href="{{ route('plan') }}"  class="sidebar-link collapsed">
                          <span class="align-middle">Subscription</span>
                      </a>
+                     <a href="{{ route('point') }}"  class="sidebar-link collapsed">
+                         <span class="align-middle">Points</span>
+                     </a>
                      <a href="{{ route('admin.password') }}"  class="sidebar-link collapsed">
                          <span class="align-middle">Change Password</span>
                      </a>

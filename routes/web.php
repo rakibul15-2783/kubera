@@ -12,6 +12,7 @@ use App\Http\Controllers\Investor\InvestorProjectController;
 use App\Http\Controllers\Entrepreneur\EntrepreneurMessageController;
 use App\Http\Controllers\Investor\InvestorMessageController;
 use App\Http\Controllers\Admin\PlanController;
+use App\Http\Controllers\Entrepreneur\SubscriptionController;
 
 /*
 |--------------------------------------------------------------------------
@@ -57,6 +58,9 @@ Route::middleware('auth')->group(function () {
             Route::get('/edit-project/{id}', [ProjectController::class, 'editProject'])->name('edit.project');
             Route::post('/update-project/{id}', [ProjectController::class, 'updateProject'])->name('update.project');
             Route::get('/delete-project/{id}', [ProjectController::class, 'deleteProject'])->name('delete.project');
+            Route::get('/subscription', [SubscriptionController::class, 'subscription'])->name('subscription');
+            Route::post('/purchase-subscription/{userId}', [SubscriptionController::class, 'purchaseSubscription'])->name('purchase.subscription');
+            Route::get('/entrepreneur-messages/{projectId}', [EntrepreneurMessageController::class, 'messages'])->name('entrepreneur.messages');
             Route::get('/entrepreneur-messages/{projectId}', [EntrepreneurMessageController::class, 'messages'])->name('entrepreneur.messages');
             Route::get('/entrepreneur-message/{messageId}', [EntrepreneurMessageController::class, 'message'])->name('entrepreneur.message');
             Route::post('/entrepreneur-message-post/{messageId}', [EntrepreneurMessageController::class, 'messagePost'])->name('entrepreneur.message.post');
@@ -86,6 +90,7 @@ Route::middleware('admin.access')->group(function () {
     Route::get('/search-user-list', [AdminController::class, 'searchUsers'])->name('search.user.list');
     Route::get('/user-profile/{id}', [AdminController::class, 'userProfile'])->name('user.profile');
     Route::get('/new-user-list', [AdminController::class, 'newUser'])->name('new.user.list');
+    Route::get('/points', [AdminController::class, 'point'])->name('point');
     Route::get('/new-user-profile/{id}', [AdminController::class, 'newUserProfile'])->name('new.user.profile');
     Route::get('/new-user-accept/{id}', [AdminController::class, 'userAccept'])->name('new.user.accept');
     Route::get('/new-user-deny/{id}', [AdminController::class, 'userDeny'])->name('new.user.deny');

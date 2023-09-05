@@ -104,6 +104,13 @@ class AdminController extends Controller
         return view('admin.search-user', compact('users'));
     }
 
+    public function point()
+    {
+        $users = User::where('role', 2)->get();
+
+        return view('admin.points', compact('users'));
+    }
+
     public function logout()
     {
         Auth::guard('admin')->logout();
@@ -137,6 +144,6 @@ class AdminController extends Controller
             }
         }
 
-
     }
+
 }
