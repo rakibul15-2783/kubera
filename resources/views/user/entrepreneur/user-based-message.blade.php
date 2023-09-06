@@ -66,10 +66,18 @@
                             </li>
                             <button type="submit" class="btn btn-info btn-rounded float-end">Send</button>
                         </form>
-
-
                     </ul>
                 </div>
+                @if ($errors->has('subscription'))
+                    <div class="alert alert-danger">
+                        {{ $errors->first('subscription') }}
+                    </div>
+                @endif
+                @if ($errors->has('points'))
+                    <div class="alert alert-danger">
+                        {{ $errors->first('points') }}
+                    </div>
+                @endif
 
             </div>
 

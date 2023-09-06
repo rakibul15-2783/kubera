@@ -3,8 +3,10 @@
 namespace App\Http\Controllers\Entrepreneur;
 
 use App\Http\Controllers\Controller;
+use App\Models\User;
 use App\Models\Message;
 use App\Models\Conversation;
+use App\Models\Subscription;
 use Illuminate\Http\Request;
 
 class EntrepreneurMessageController extends Controller
@@ -25,21 +27,64 @@ class EntrepreneurMessageController extends Controller
         return view('user.entrepreneur.user-based-message',compact('conversations','message'));
     }
 
+    // public function messagePost(Request $request, $messageId)
+    // {
+    //     $userId = auth()->user()->id;
+    //     $message = Message::find($messageId)->first();
+
+    //     // dd($messageId);
+    //     $projectId = $message->project_id;
+
+    //     $conversation = new Conversation();
+    //     $conversation->user_id = $userId;
+    //     $conversation->message_id = $messageId;
+    //     $conversation->conversation = $request->message;
+    //     // dd($conversation);
+    //     $conversation->save();
+
+    //     return back();
+    // }
+
+
     public function messagePost(Request $request, $messageId)
     {
         $userId = auth()->user()->id;
-        $message = Message::find($messageId)->first();
+        $message = Message::find($messageId);
 
-        // dd($messageId);
-        $projectId = $message->project_id;
+        $subscription = Subscription::where('user_id', $userId)
+            ->where('end_date', '>=', now())
+            ->first();
 
-        $conversation = new Conversation();
-        $conversation->user_id = $userId;
-        $conversation->message_id = $messageId;
-        $conversation->conversation = $request->message;
-        // dd($conversation);
-        $conversation->save();
+        if ($subscription) {
 
-        return back();
+            $existingConversations = Conversation::where('message_id', $messageId)
+            ->where('user_id', $userId)
+            ->get();
+
+            if (auth()->user()->role == 2 && count($existingConversations) === 0) {
+
+                $user = User::find($userId);
+
+                if ($user->userDetails->points >= 5)
+                {
+                    $user->userDetails->decrement('points', 5);
+                }
+                else
+                {
+                    return back()->withErrors(['points' => 'Insufficient points']);
+                }
+            }
+
+            $conversation = new Conversation();
+            $conversation->user_id = $userId;
+            $conversation->message_id = $messageId;
+            $conversation->conversation = $request->message;
+            $conversation->save();
+
+            return back();
+        } else {
+            return back()->withErrors(['subscription' => 'Please subcribe to use the chat option. Here is the subsription page .']);
+        }
     }
+
 }

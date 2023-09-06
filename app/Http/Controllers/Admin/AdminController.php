@@ -119,7 +119,7 @@ class AdminController extends Controller
 
         if($userDetails)
         {
-            $userDetails->points = $points;
+            $userDetails->points = $userDetails->points + $points;
             $userDetails->save();
 
             return back();
