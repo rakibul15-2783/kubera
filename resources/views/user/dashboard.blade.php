@@ -9,26 +9,20 @@
 </head>
 <body>
     <div class="container">
-        <div class="row">
-            <div class="col-lg-8">
-                <h2>Dashboard</h2>
-            </div>
-            <div class="col-lg-4">
-                <a href="{{ route('logout') }}">log out</a>
-            </div>
+        <div class="card shadow p-4 m-4">
+            @if (auth()->user()->role == 2)
+                <div>
+                    <a href="{{ route('my.project') }}" class="btn btn-info">My Project</a>
+                    <a href="{{ route('subscription') }}" class="btn btn-info">Subscription</a>
+                    <a href="{{ route('logout') }}" class="btn btn-info">log out</a>
+                </div>
+            @else
+                <div>
+                    <a href="{{ route('show.projects') }}" class="btn btn-info">See Project</a>
+                    <a href="{{ route('logout') }}" class="btn btn-info">log out</a>
+                </div>
+            @endif
         </div>
-
-        @if (auth()->user()->role == 2)
-            <div>
-                <a href="{{ route('my.project') }}" class="btn btn-info">Project</a>
-                <a href="{{ route('subscription') }}" class="btn btn-info">Subscription</a>
-            </div>
-        @else
-            <div>
-                <a href="{{ route('show.projects') }}" class="btn btn-info">See Project</a>
-            </div>
-        @endif
-
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.min.js" integrity="sha384-cuYeSxntonz0PPNlHhBs68uyIAVpIIOZZ5JqeqvYYIcEL727kskC66kF92t6Xl2V" crossorigin="anonymous"></script>

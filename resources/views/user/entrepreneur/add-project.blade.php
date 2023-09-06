@@ -9,6 +9,7 @@
 </head>
 <body>
 
+    @include('user.dashboard')
     <div class="container">
         <h2 class="text-center">Add Project</h2>
         <div class="row">

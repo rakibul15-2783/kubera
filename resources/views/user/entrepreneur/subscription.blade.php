@@ -9,13 +9,11 @@
 
 </head>
 <body>
+    @include('user.dashboard')
     <div class="container">
         <div class="row">
             <div class="col-lg-8">
-                <h2>Dashboard / Subscription</h2>
-            </div>
-            <div class="col-lg-4">
-                <a href="{{ route('logout') }}">log out</a>
+                <h5>Dashboard / Subscription</h5>
             </div>
         </div><br>
         <div class="row">
