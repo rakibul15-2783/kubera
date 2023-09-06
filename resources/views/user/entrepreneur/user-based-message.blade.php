@@ -72,6 +72,7 @@
                 @if ($errors->has('subscription'))
                     <div class="alert alert-danger">
                         {{ $errors->first('subscription') }}
+                        <a href="{{ route('subscription') }}"> Here is the subsription page</a>
                     </div>
                 @endif
                 @if ($errors->has('points'))

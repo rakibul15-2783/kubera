@@ -32,12 +32,6 @@ class EntrepreneurMessageController extends Controller
         $userId = auth()->user()->id;
         $message = Message::find($messageId);
 
-        $subscription = Subscription::where('user_id', $userId)
-            ->where('end_date', '>=', now())
-            ->first();
-
-        if ($subscription) {
-
             $existingConversations = Conversation::where('message_id', $messageId)
             ->where('user_id', $userId)
             ->get();
@@ -63,9 +57,7 @@ class EntrepreneurMessageController extends Controller
             $conversation->save();
 
             return back();
-        } else {
-            return back()->withErrors(['subscription' => 'Please subcribe to use the chat option. Here is the subsription page .']);
-        }
+
     }
 
 }
