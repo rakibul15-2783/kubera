@@ -9,7 +9,7 @@
 </head>
 <body>
 
-<h2></h2>
+@include('user.dashboard')
 <div class="container">
     <div class="row">
         <h2>Your Project Information</h2>

@@ -9,6 +9,7 @@
 
 </head>
 <body>
+    @include('user.dashboard')
     <div class="container">
 
         <div class="row">
