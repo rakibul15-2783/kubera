@@ -27,25 +27,6 @@ class EntrepreneurMessageController extends Controller
         return view('user.entrepreneur.user-based-message',compact('conversations','message'));
     }
 
-    // public function messagePost(Request $request, $messageId)
-    // {
-    //     $userId = auth()->user()->id;
-    //     $message = Message::find($messageId)->first();
-
-    //     // dd($messageId);
-    //     $projectId = $message->project_id;
-
-    //     $conversation = new Conversation();
-    //     $conversation->user_id = $userId;
-    //     $conversation->message_id = $messageId;
-    //     $conversation->conversation = $request->message;
-    //     // dd($conversation);
-    //     $conversation->save();
-
-    //     return back();
-    // }
-
-
     public function messagePost(Request $request, $messageId)
     {
         $userId = auth()->user()->id;

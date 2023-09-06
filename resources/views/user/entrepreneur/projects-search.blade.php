@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>kubera</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
-
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 <body>
     @include('user.dashboard')
@@ -25,9 +25,10 @@
             <div class="col-md-6">
                 <form action="{{ route('project.search') }}" method="GET">
                     <div class="input-group">
-                        <input class="form-control" name="search" placeholder="Search by project title / category..." type="text">
+                        <input class="form-control" name="search" value="{{ Request::get('search') }}" placeholder="Search by project title / category..." type="text">
                         <div class="input-group-append">
                             <button type="submit" class="btn btn-info">Search</button>
+                            <a href="{{ route('my.project') }}" class="btn btn-danger"><i class="fa-solid fa-xmark"></i></a>
                         </div>
                     </div>
                 </form>

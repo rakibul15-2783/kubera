@@ -52,6 +52,7 @@ Route::middleware('auth')->group(function () {
         //entrepreneur route
         Route::middleware('entrepreneur')->group(function () {
             Route::get('/my-project', [ProjectController::class, 'myProject'])->name('my.project');
+            Route::get('/project-search', [ProjectController::class, 'projectSearch'])->name('project.search');
             Route::get('/add-project', [ProjectController::class, 'addProject'])->name('add.project');
             Route::post('/project-submit', [ProjectController::class, 'projectSubmit'])->name('project.submit');
             Route::get('/my-project-details/{id}', [ProjectController::class, 'projectDetails'])->name('my.project.details');

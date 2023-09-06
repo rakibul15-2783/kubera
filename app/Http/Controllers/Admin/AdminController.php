@@ -88,7 +88,7 @@ class AdminController extends Controller
         $user = User::find($id);
 
         $user->user_verification_request = 0;
-        $user->user_verified = 1;
+        $user->user_verified = 1; 
         $user->save();
 
         return redirect()->route('new.user.list');

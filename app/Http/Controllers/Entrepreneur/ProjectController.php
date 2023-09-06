@@ -11,10 +11,25 @@ use App\Models\ProjectDetails;
 
 class ProjectController extends Controller
 {
-    public function myProject() 
+    public function myProject()
     {
         $projects = Project::where('user_id', auth()->user()->id)->get();
         return view('user.entrepreneur.projects',compact('projects'));
+    }
+
+    public function projectSearch(Request $request)
+    {
+        $search = $request->input('search');
+        $userId = auth()->user()->id;
+
+        $projects = Project::where('user_id', $userId)
+            ->whereHas('projectDetails', function ($query) use ($search) {
+                $query->where('project_title', 'LIKE', "%$search%")
+                    ->orWhere('project_category', 'LIKE', "%$search%");
+            })
+            ->get();
+
+        return view('user.entrepreneur.projects-search', compact('projects'));
     }
 
     public function addProject()
