@@ -64,7 +64,7 @@ Route::middleware('auth')->group(function () {
             Route::get('/entrepreneur-messages/{projectId}', [EntrepreneurMessageController::class, 'messages'])->name('entrepreneur.messages');
             Route::get('/entrepreneur-messages/{projectId}', [EntrepreneurMessageController::class, 'messages'])->name('entrepreneur.messages');
             Route::get('/entrepreneur-message/{messageId}', [EntrepreneurMessageController::class, 'message'])->name('entrepreneur.message');
-            Route::post('/entrepreneur-message-post/{messageId}', [EntrepreneurMessageController::class, 'messagePost'])->name('entrepreneur.message.post')->middleware('subscription');
+            Route::post('/entrepreneur-message-post/{messageId}', [EntrepreneurMessageController::class, 'messagePost'])->name('entrepreneur.message.post');
 
         });
 

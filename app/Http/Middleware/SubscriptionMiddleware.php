@@ -24,11 +24,7 @@ class SubscriptionMiddleware
             {
                 return $next($request);
             }
-            else
-            {
-                return back()->withErrors(['subscription' => 'Please subcribe to use the chat option.']);
-            }
 
-
+        return back();
     }
 }
