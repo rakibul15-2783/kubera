@@ -18,6 +18,12 @@
         </div>
         <div>
             <a href="{{ route('add.project') }}" class="btn btn-info"> Add Project</a>
+            @if ($errors->has('subscription'))
+                <div class="text-danger p-0">
+                    {{ $errors->first('subscription') }}
+                    <a href="{{ route('subscription') }}">Here is the subscription page</a>
+                </div>
+            @endif
         </div><br>
 
         <div class="row">

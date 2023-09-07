@@ -81,6 +81,7 @@
                         <b><label for="zip_code">Zip Code</label><span></b> {{ $userAddress->zip_code }}</span>
                     </div>
                 </div><br>
+                <a href="{{ route('entrepreneur.profile.edit') }}" class="btn btn-info">Update Profile</a>
         </div>
     </div>
 </div>

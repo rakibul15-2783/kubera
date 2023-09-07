@@ -21,7 +21,7 @@
                 <ul class="navbar-nav mx-auto "> <!-- Use mx-auto to center-align the links -->
                     @if (auth()->user()->role == 2)
                         <li class="nav-item">
-                            <a class="nav-link text-white" href="">Profile</a>
+                            <a class="nav-link text-white" href="{{ route('entrepreneur.profile') }}">Profile</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link text-white" href="{{ route('my.project') }}">My Projects</a>
@@ -31,7 +31,7 @@
                         </li>
                     @else
                         <li class="nav-item">
-                            <a class="nav-link text-white" href="">Profile</a>
+                            <a class="nav-link text-white" href="{{ route('investor.profile') }}">Profile</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link text-white" href="{{ route('show.projects') }}">See Projects</a>

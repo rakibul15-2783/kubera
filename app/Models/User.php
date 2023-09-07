@@ -56,7 +56,7 @@ class User extends Authenticatable implements MustVerifyEmail
 
     public function userAddresses()
     {
-        return $this->belongsTo(UserAddress::class);
+        return $this->hasOne(UserAddress::class);
     }
 
     public function projects()

@@ -42,9 +42,14 @@ Route::middleware('auth')->group(function () {
     Route::get('/investor', [InvestorController::class, 'profileUpdate'])->name('investor');
     Route::post('/investor-profile-update-post/{id}', [InvestorController::class, 'profileUpdatePost'])->name('investor.profile.update.post');
     Route::get('/investor-profile', [InvestorController::class, 'profile'])->name('investor.profile');
+    Route::get('/investor/profile/update', [InvestorController::class, 'profileEdit'])->name('investor.profile.edit');
+    Route::post('/investor/profile/update/post/{id}', [InvestorController::class, 'profileEditPost'])->name('investor.profile.edit.post');
+
     Route::get('/entrepreneur', [EntrepreneurController::class, 'profileUpdate'])->name('entrepreneur');
     Route::post('/entrepreneur-profile-update-post/{id}', [EntrepreneurController::class, 'profileUpdatePost'])->name('entrepreneur.profile.update.post');
     Route::get('/entrepreneur-profile', [EntrepreneurController::class, 'profile'])->name('entrepreneur.profile');
+    Route::get('/entrepreneur/profile/update', [EntrepreneurController::class, 'profileEdit'])->name('entrepreneur.profile.edit');
+    Route::post('/entrepreneur/profile/update/post/{id}', [EntrepreneurController::class, 'profileEditPost'])->name('entrepreneur.profile.edit.post');
 
     Route::middleware('user.verified')->group(function () {
         Route::get('/dashboard', [UserController::class, 'dashboard'])->name('dashboard');
@@ -53,8 +58,8 @@ Route::middleware('auth')->group(function () {
         Route::middleware('entrepreneur')->group(function () {
             Route::get('/my-project', [ProjectController::class, 'myProject'])->name('my.project');
             Route::get('/project-search', [ProjectController::class, 'projectSearch'])->name('project.search');
-            Route::get('/add-project', [ProjectController::class, 'addProject'])->name('add.project');
-            Route::post('/project-submit', [ProjectController::class, 'projectSubmit'])->name('project.submit');
+            Route::get('/add-project', [ProjectController::class, 'addProject'])->name('add.project')->middleware('subscription');
+            Route::post('/project-submit', [ProjectController::class, 'projectSubmit'])->name('project.submit')->middleware('subscription');
             Route::get('/my-project-details/{id}', [ProjectController::class, 'projectDetails'])->name('my.project.details');
             Route::get('/edit-project/{id}', [ProjectController::class, 'editProject'])->name('edit.project');
             Route::post('/update-project/{id}', [ProjectController::class, 'updateProject'])->name('update.project');

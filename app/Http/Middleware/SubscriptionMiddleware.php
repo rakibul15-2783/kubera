@@ -25,6 +25,6 @@ class SubscriptionMiddleware
                 return $next($request);
             }
 
-        return back();
+        return back()->withErrors(['subscription' => 'You need a valid subscription .']);
     }
 }

@@ -9,7 +9,8 @@
 </head>
 <body>
 
-<h2></h2>
+    @include('user.dashboard')
+    <br>
 <div class="container">
     <div class="row">
         <h2>Your Profile Information</h2>
@@ -81,6 +82,7 @@
                         <b><label for="zip_code">Zip Code</label><span></b> {{ $userAddress->zip_code }}</span>
                     </div>
                 </div><br>
+                <a href="{{ route('entrepreneur.profile.edit') }}" class="btn btn-info">Update Profile</a>
         </div>
     </div>
 </div>
