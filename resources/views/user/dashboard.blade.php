@@ -20,9 +20,11 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav mx-auto "> <!-- Use mx-auto to center-align the links -->
                     @if (auth()->user()->role == 2)
-                        <li class="nav-item">
-                            <a class="nav-link text-white" href="{{ route('entrepreneur.profile') }}">Profile</a>
-                        </li>
+                        @if (auth()->user()->user_verification_request =1 || auth()->user()->user_verified =1)
+                            <li class="nav-item">
+                                <a class="nav-link text-white" href="{{ route('entrepreneur.profile') }}">Profile</a>
+                            </li>
+                        @endif
                         <li class="nav-item">
                             <a class="nav-link text-white" href="{{ route('my.project') }}">My Projects</a>
                         </li>
@@ -30,9 +32,11 @@
                             <a class="nav-link text-white" href="{{ route('subscription') }}">Subscription</a>
                         </li>
                     @else
-                        <li class="nav-item">
-                            <a class="nav-link text-white" href="{{ route('investor.profile') }}">Profile</a>
-                        </li>
+                        @if (auth()->user()->user_verification_request == 1 || auth()->user()->user_verified == 1)
+                            <li class="nav-item">
+                                <a class="nav-link text-white" href="{{ route('entrepreneur.profile') }}">Profile</a>
+                            </li>
+                        @endif
                         <li class="nav-item">
                             <a class="nav-link text-white" href="{{ route('show.projects') }}">See Projects</a>
                         </li>
