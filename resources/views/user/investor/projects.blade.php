@@ -11,22 +11,27 @@
     @include('user.dashboard')
 <div class="container">
     <h2>Projects</h2>
-    @foreach ($projects as $project)
-        <div class="row">
-            <div class="col-md-4">
-                <div class="card shadow-lg">
+    <div class="row">
+        @foreach ($projects as $project)
+            <div class="col-md-12">
+                <div class="card mb-4 shadow-sm">
                     <div class="card-header">
-                        <span>Project id: #000{{ $project->id }}</span>
+                        <h5 class="mb-0">Project #000{{ $project->id }}</h5>
                     </div>
                     <div class="card-body">
-                        <strong class="card-title">Project Title: </strong><br>{{ $project->projectDetails->project_title }} <br>
-                        <strong class="card-text">Project Description: </strong><br>{{ $project->projectDetails->description }} <br>
+                        <h6 class="card-title">Project Title:</h6>
+                        <p class="card-text">{{ $project->projectDetails->project_title }}</p>
+
+                        <h6 class="card-title">Project Description:</h6>
+                        <p class="card-text">{{ $project->projectDetails->description }}</p>
+
                         <a href="{{ route('project.info',['id' => $project->id]) }}" class="btn btn-info">Details</a>
                     </div>
                 </div>
             </div>
-        </div><br>
-    @endforeach
+        @endforeach
+    </div>
+
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.min.js" integrity="sha384-cuYeSxntonz0PPNlHhBs68uyIAVpIIOZZ5JqeqvYYIcEL727kskC66kF92t6Xl2V" crossorigin="anonymous"></script>
