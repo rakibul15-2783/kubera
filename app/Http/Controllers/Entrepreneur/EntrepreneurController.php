@@ -68,7 +68,6 @@ class EntrepreneurController extends Controller
     {
         $userId = auth()->user()->id;
         $user = User::findOrFail($userId);
-
         return view('user.entrepreneur.update-profile', compact('user'));
     }
 
@@ -116,9 +115,12 @@ class EntrepreneurController extends Controller
 
 
     public function profile(){
-        $user = auth()->user()->id;
-        $userDetails = UserDetails::where('user_id',$user)->first();
-        $userAddress = UserAddress::where('user_id',$user)->first();
+        $userId = auth()->user()->id;
+
+        $user = User::findOrFail($userId)->first();
+        // dd($user);
+        $userDetails = UserDetails::where('user_id',$userId)->first();
+        $userAddress = UserAddress::where('user_id',$userId)->first();
 
         return view('user.entrepreneur.profile-view',compact('user','userDetails','userAddress'));
     }

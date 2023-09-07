@@ -34,7 +34,7 @@
                     @else
                         @if (auth()->user()->user_verification_request == 1 || auth()->user()->user_verified == 1)
                             <li class="nav-item">
-                                <a class="nav-link text-white" href="{{ route('entrepreneur.profile') }}">Profile</a>
+                                <a class="nav-link text-white" href="{{ route('investor.profile') }}">Profile</a>
                             </li>
                         @endif
                         <li class="nav-item">

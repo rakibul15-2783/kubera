@@ -16,7 +16,7 @@
 
         <h2>Your Profile</h2>
         <div class="col-md-12 col-xl-12 card p-3">
-            <form action="">
+            <form action="{{ route('entrepreneur.profile.update.post',['id' => auth()->user()->id]) }}" enctype="multipart/form-data" method="POST">
                 @csrf
                 <div class="row">
                     <div class="form-row col-xl-6">

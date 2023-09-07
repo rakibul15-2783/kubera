@@ -50,14 +50,14 @@
                             <h5>Bio</h5><span> {{ $userDetails->bio }}</span>
                         </div><br>
                         @if (auth()->user()->user_verification_request == 1 )
-                        <div class="form-group ">
-                            <span class="btn btn-info">Verification Request Send</span>
-                        </div>
+                            <div class="form-group ">
+                                <span class="btn btn-info">Verification Request Send</span>
+                            </div>
                         @endif
                         @if (auth()->user()->user_verified == 1 )
-                        <div class="form-group ">
-                            <span class="btn btn-info">Verified</span>
-                        </div>
+                            <div class="form-group ">
+                                <span class="btn btn-info">Verified</span>
+                            </div>
                         @endif
                     </div>
 
@@ -82,7 +82,7 @@
                         <b><label for="zip_code">Zip Code</label><span></b> {{ $userAddress->zip_code }}</span>
                     </div>
                 </div><br>
-                <a href="{{ route('entrepreneur.profile.edit') }}" class="btn btn-info">Update Profile</a>
+                <a href="{{ route('investor.profile.edit') }}" class="btn btn-info">Update Profile</a>
         </div>
     </div>
 </div>
