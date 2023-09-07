@@ -19,8 +19,12 @@ class AdminController extends Controller
     public function dashboard()
     {
         $totalUser = User::where('user_verified', 1)->count();
-        $investor = User::where('role', 1)->count();
-        $entrepreneur = User::where('role', 2)->count();
+        $investor = User::where('role', 1)
+            ->where('user_verified', 1)
+            ->count();
+        $entrepreneur = User::where('role', 2)
+            ->where('user_verified', 1)
+            ->count();
         $totalUser = User::where('user_verified', 1)->count();
         $requestUser = User::where('user_verification_request', 1)->count();
         $totalProject = Project::all()->count();
@@ -88,7 +92,7 @@ class AdminController extends Controller
         $user = User::find($id);
 
         $user->user_verification_request = 0;
-        $user->user_verified = 1; 
+        $user->user_verified = 1;
         $user->save();
 
         return redirect()->route('new.user.list');

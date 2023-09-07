@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('subscriptions', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('user_id');
-            $table->integer('plan_id');
+            $table->unsignedBigInteger('plan_id');
             $table->timestamp('start_date');
             $table->timestamp('end_date');
             $table->timestamps();

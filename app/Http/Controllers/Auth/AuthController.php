@@ -86,14 +86,6 @@ class AuthController extends Controller
         $user->remember_token = Str::random(60);
         $user->save();
 
-        $userDetails = new UserDetails();
-        $userDetails->user_id = $user->id;
-        $userDetails->save();
-
-        $userAddress = new UserAddress();
-        $userAddress->user_id = $user->id;
-        $userAddress->save();
-
         Mail::to($user->email)->send(new VerifyEmail($user));
 
         return redirect()->route('login')->with('success', 'Registration successful. Please check your email for verification.');
