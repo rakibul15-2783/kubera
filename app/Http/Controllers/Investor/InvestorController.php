@@ -65,11 +65,18 @@ class InvestorController extends Controller
 
     public function profile()
     {
-        $user = auth()->user()->id;
-        $userDetails = UserDetails::where('user_id',$user)->first();
-        $userAddress = UserAddress::where('user_id',$user)->first();
+        $userId = auth()->user()->id;
 
-        return view('user.investor.profile-view',compact('user','userDetails','userAddress'));
+        $user = User::findOrFail($userId)->first();
+        $userDetails = UserDetails::where('user_id',$userId)->first();
+        $userAddress = UserAddress::where('user_id',$userId)->first();
+
+        if($userDetails && $userAddress)
+        {
+            return view('user.investor.profile-view',compact('user','userDetails','userAddress'));
+        }
+
+        return back();
     }
 
     public function profileEdit()

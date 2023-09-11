@@ -65,8 +65,6 @@ class AdminController extends Controller
     public function userAccept($id)
     {
         $user = User::find($id);
-
-        $user->user_verification_request = 0;
         $user->user_verified = 1;
         $user->save();
 

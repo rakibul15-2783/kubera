@@ -49,12 +49,12 @@
                         <div class="form-group ">
                             <h5>Bio</h5><span> {{ $userDetails->bio }}</span>
                         </div><br>
-                        @if (auth()->user()->user_verification_request == 1 )
+                        @if ($user->user_verification_request == 1 && $user->user_verified == 0)
                             <div class="form-group ">
                                 <span class="btn btn-info">Verification Request Send</span>
                             </div>
                         @endif
-                        @if (auth()->user()->user_verified == 1 )
+                        @if ($user->user_verified == 1 && $user->user_verification_request == 1)
                             <div class="form-group ">
                                 <span class="btn btn-info">Verified</span>
                             </div>

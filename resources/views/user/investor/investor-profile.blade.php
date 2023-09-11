@@ -14,7 +14,11 @@
 <div class="container">
     <div class="row">
         <div class="d-flex justify-content-center">
-
+            @if(session('errors'))
+                <div class="alert alert-danger">
+                    {{ session('errors')->first('verification') }}
+                </div>
+            @endif
 
             <div class="alert alert-danger col-sm-6 p-2">
                 <span>Please fill up this form for verification. Without Verification, you cannot access this site.</span>
