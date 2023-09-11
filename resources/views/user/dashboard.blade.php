@@ -48,6 +48,12 @@
             </div>
         </nav>
     </div>
+    @if(session('errors'))
+        <div class="alert alert-danger">
+            {{ session('errors')->first('verification') }}
+        </div>
+    @endif
+
 
 
 

@@ -34,6 +34,7 @@ class SubscriptionController extends Controller
             $subscription->start_date = Carbon::now();
             $subscription->end_date = Carbon::now()->addMonth($planId);
             $subscription->save();
+            
             return back();
         }
 

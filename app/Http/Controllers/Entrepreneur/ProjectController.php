@@ -14,6 +14,7 @@ class ProjectController extends Controller
     public function myProject()
     {
         $projects = Project::where('user_id', auth()->user()->id)->get();
+
         return view('user.entrepreneur.projects',compact('projects'));
     }
 
@@ -76,6 +77,7 @@ class ProjectController extends Controller
     public function editProject($id){
 
         $project = Project::find($id);
+
         return view('user.entrepreneur.edit-project',compact('project'));
     }
 
@@ -116,6 +118,7 @@ class ProjectController extends Controller
     public function projectDetails($id)
     {
         $project = Project::find($id);
+        
         return view('user.entrepreneur.project-details',compact('project'));
     }
 

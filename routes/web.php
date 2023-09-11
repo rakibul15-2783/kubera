@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\AuthController;
 use App\Http\Controllers\User\UserController;
 use App\Http\Controllers\Admin\AdminController;
+use App\Http\Controllers\Admin\AdminAuthController;
 use App\Http\Controllers\Entrepreneur\EntrepreneurController;
 use App\Http\Controllers\Investor\InvestorController;
 use App\Http\Controllers\Entrepreneur\ProjectController;
@@ -29,16 +30,17 @@ Route::middleware('guest')->group(function () {
     Route::get('/', function () {
         return view('welcome');
     });
-    Route::get('/login', [AuthController::class, 'login'])->name('login');
     Route::get('/register', [AuthController::class, 'register'])->name('register');
     Route::post('/register-post', [AuthController::class, 'registerPost'])->name('register.post');
+    Route::get('/login', [AuthController::class, 'login'])->name('login');
     Route::post('/login-post', [AuthController::class, 'loginPost'])->name('login.post');
+
 
 });
 
 //user section
 Route::middleware('auth')->group(function () {
-    Route::get('/user-role', [UserController::class, 'userRole'])->name('user.role');
+    Route::get('/user/role', [UserController::class, 'userRole'])->name('user.role');
     Route::get('/investor', [InvestorController::class, 'profileUpdate'])->name('investor');
     Route::post('/investor-profile-update-post/{id}', [InvestorController::class, 'profileUpdatePost'])->name('investor.profile.update.post');
     Route::get('/investor-profile', [InvestorController::class, 'profile'])->name('investor.profile');
@@ -103,16 +105,16 @@ Route::middleware('admin.access')->group(function () {
     Route::get('/new-user-deny/{id}', [AdminController::class, 'userDeny'])->name('new.user.deny');
     Route::get('/plan', [PlanController::class, 'plan'])->name('plan');
     Route::post('/plan-post', [PlanController::class, 'planPost'])->name('plan.post');
-    Route::get('/admin-change-password', [AdminController::class, 'changePassword'])->name('admin.password');
-    Route::post('/admin-change-password-post/{id}', [AdminController::class, 'changePasswordPost'])->name('admin.password.post');
+    Route::get('/admin-change-password', [AdminAuthController::class, 'changePassword'])->name('admin.password');
+    Route::post('/admin-change-password-post/{id}', [AdminAuthController::class, 'changePasswordPost'])->name('admin.password.post');
     Route::get('/all-project', [AdminProjectController::class, 'projects'])->name('all.project');
     Route::get('/project-details/{id}', [AdminProjectController::class, 'projectDetails'])->name('project.details');
 });
 
 
-Route::get('/admin-login', [AdminController::class, 'login'])->name('admin.login');
-Route::post('/admin-login-post', [AdminController::class, 'loginPost'])->name('admin.login.post');
-Route::get('/admin-logout', [AdminController::class, 'logout'])->name('admin.logout');
+Route::get('/admin/login', [AdminAuthController::class, 'login'])->name('admin.login');
+Route::post('/admin-login-post', [AdminAuthController::class, 'loginPost'])->name('admin.login.post');
+Route::get('/admin-logout', [AdminAuthController::class, 'logout'])->name('admin.logout');
 //user logout
 Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
 

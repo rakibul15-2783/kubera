@@ -14,6 +14,7 @@
                         </a>
                         <div class="dropdown-menu dropdown-menu-right">
                            <a class="dropdown-item" href="pages-profile.html"><i class="align-middle mr-1" data-feather="user"></i> Profile</a>
+                           <a class="dropdown-item" href="{{ route('admin.password') }}" ><i class="fa-solid fa-key"></i> Change Password</a>
                            <a class="dropdown-item" href="{{ route('admin.logout') }}">Log out</a>
                         </div>
                      </li>

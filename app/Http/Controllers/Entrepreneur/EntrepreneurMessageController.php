@@ -34,8 +34,7 @@ class EntrepreneurMessageController extends Controller
             ->count();
         $user = User::find($userId);
         $points = $user->userDetails->points;
-        // dd($points);
-        // dd($existingConversations);
+
         return view('user.entrepreneur.user-based-message',compact('conversations','message','subscription','existingConversations','points'));
     }
 
@@ -59,6 +58,7 @@ class EntrepreneurMessageController extends Controller
             $conversation->message_id = $messageId;
             $conversation->conversation = $request->message;
             $conversation->save();
+            
             return back();
 
         }

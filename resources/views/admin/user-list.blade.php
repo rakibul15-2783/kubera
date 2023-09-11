@@ -76,7 +76,7 @@
 
 @else
     <div class="col-lg-6 alert alert-info ">
-        <span class="">Users available</span>
+        <span class="">User Not available</span>
     </div>
 @endif
 

@@ -3,6 +3,7 @@
 namespace App\Http\Middleware;
 
 use Closure;
+use App\Enums\UserRole;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
 
@@ -15,9 +16,9 @@ class InvestorMiddleware
      */
     public function handle(Request $request, Closure $next): Response
     {
-        if (auth()->user()->role == 1) {
+        if (auth()->user()->role == UserRole::Investor) {
             return $next($request);
         }
-        return back();
+        return back()->withErrors(['verification'=>'You have to verified first to Access it.']);
     }
 }

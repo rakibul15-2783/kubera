@@ -60,7 +60,7 @@
                     <input type="password" name="password" class="form-control" required placeholder="New Password">
                     @error('password')
                         <span class="text-danger">{{ $message }}</span>
-                    @enderror
+                    @enderrorphp 
                 </div>
                 <div class="form-group pass_show">
                     <input type="password" name="password_confirmation" class="form-control" required placeholder="Confirm Password">

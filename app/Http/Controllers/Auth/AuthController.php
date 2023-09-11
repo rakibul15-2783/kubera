@@ -12,9 +12,11 @@ use Carbon\Carbon;
 use App\Models\User;
 use App\Models\UserDetails;
 use App\Models\UserAddress;
+use App\Enums\UserRole;
 use Illuminate\Contracts\View\View;
 use Illuminate\Support\Facades\Hash;
 use App\Http\Requests\UserRegistration;
+use App\Http\Requests\UserLoginValidation;
 
 class AuthController extends Controller
 {
@@ -23,45 +25,50 @@ class AuthController extends Controller
         return view('auth.login');
     }
 
-    public function loginPost(Request $request)
+    public function loginPost(UserLoginValidation $request)
     {
         $credentials = $request->only('email', 'password');
         $user = User::where('email', $request->email)->first();
 
         if ($user) {
+
             if ($user->email_verified_at)
             {
-                if (Auth::attempt($credentials))
+                if($user->status == true)
                 {
-                    $user->update([
-                        'last_login' => Carbon::now(),
-                    ]);
+                    if (Auth::attempt($credentials))
+                    {
+                        $user->update([
+                            'last_login' => Carbon::now(),
+                        ]);
 
-                    if(auth()->user()->status != false)
-                    {
-                        return redirect()->route('dashboard');
-                    }
-                    elseif(auth()->user()->role == 1 && auth()->user()->user_verified == 0)
-                    {
-                        return redirect()->route('investor.profile');
-                    }
-                    elseif(auth()->user()->role == 2 && auth()->user()->user_verified == 0)
-                    {
-                        return redirect()->route('entrepreneur.profile');
-                    }
-                    elseif(auth()->user()->user_verified == 1)
-                    {
-                        return redirect()->route('dashboard');
+                        if(auth()->user()->role == UserRole::Investor && auth()->user()->user_verified == 0)
+                        {
+                            return redirect()->route('investor.profile');
+                        }
+                        elseif(auth()->user()->role == UserRole::Entrepreneur && auth()->user()->user_verified == 0)
+                        {
+                            return redirect()->route('entrepreneur.profile');
+                        }
+                        elseif(auth()->user()->user_verified == 1)
+                        {
+                            return redirect()->route('dashboard');
+                        }
+                        else
+                        {
+                            return redirect()->route('user.role');
+                        }
                     }
                     else
                     {
-                        return redirect()->route('user.role');
+                        return back()->withErrors(['password' => 'Invalid email or password']);
                     }
                 }
                 else
                 {
-                    return back()->withErrors(['password' => 'Invalid email or password']);
+                    return back()->withErrors(['disable' => 'Your Account is Disable.']);
                 }
+
             }
             else
             {
@@ -96,11 +103,13 @@ class AuthController extends Controller
         $user = User::where('remember_token', $token)->first();
 
         if (!$user) {
+
             return redirect()->route('login')->with('error', 'Invalid verification token.');
         }
 
         $user->email_verified_at= now();
         $user->remember_token = null;
+        $user->status = true;
         $user->save();
 
         return redirect()->route('login')->with('success', 'Email verified successfully.');

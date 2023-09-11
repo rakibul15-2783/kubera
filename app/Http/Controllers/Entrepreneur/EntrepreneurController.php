@@ -68,6 +68,7 @@ class EntrepreneurController extends Controller
     {
         $userId = auth()->user()->id;
         $user = User::findOrFail($userId);
+        
         return view('user.entrepreneur.update-profile', compact('user'));
     }
 

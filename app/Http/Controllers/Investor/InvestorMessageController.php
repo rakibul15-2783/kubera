@@ -13,7 +13,6 @@ class InvestorMessageController extends Controller
     public function message($projectId)
     {
         $userId = auth()->user()->id;
-
         $project = Project::findOrFail($projectId);
 
         $message = Message::where('project_id', $projectId)

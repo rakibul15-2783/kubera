@@ -14,6 +14,8 @@
 <div class="container">
     <div class="row">
         <div class="d-flex justify-content-center">
+
+
             <div class="alert alert-danger col-sm-6 p-2">
                 <span>Please fill up this form for verification. Without Verification, you cannot access this site.</span>
             </div>
@@ -29,7 +31,7 @@
                         </div>
                         <div class="form-group ">
                             <label for="name">Name</label>
-                            <input type="text" name="name" value="{{ old('name') }}" class="name form-control" id="name" >
+                            <input type="text" name="name" value="{{ old('name') }}" class="name form-control" id="name" required>
                         </div>
                         @error('name')
                             <div class="alert alert-danger">{{ $message }}</div>

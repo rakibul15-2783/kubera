@@ -41,17 +41,21 @@
                                         @enderror
                                     </div>
                                 </div>
+                                <div>
+                                    @error('disable')
+                                        <span class="text-danger">{{ $message }}</span>
+                                    @enderror
+                                </div>
                                 <div class="row mb-4">
                                 <div class="col d-flex justify-content-center">
-                                    <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" value="" id="form2Example31" checked />
-                                    <label class="form-check-label" for="form2Example31"> Remember me </label>
-                                    </div>
+                                    {{-- <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" value="" name="remember" id="remember" checked />
+                                        <label class="form-check-label" for="remember"> Remember me </label>
+                                    </div> --}}
                                 </div>
 
                                 <div class="col">
                                     <a href="#!">Forgot password?</a>
-                                </div>
                                 </div>
                                 <div class="text-center">
                                     <button type="submit" class="btn btn-primary btn-block mb-4">Sign in</button>
